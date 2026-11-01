@@ -34,8 +34,8 @@ att stava varje namn. Är koden du vill använda skriven med stora bokstäver n�
 SCB:s `SE1408`, skriv den med små: `se1408`.
 
 Inom formatet väljer länet fritt: en förkortning (`se-jkp`), SCB-koden (`se06`) eller något annat
-som folk i länet känner igen. Utgångsläget i listan är det namn länets repeatrar redan bär, eller
-annars `se-` och tre bokstäver, men det är bara ett förslag.
+som folk i länet känner igen. Utgångsläget i listan är `se-` och tre bokstäver, men det är bara
+ett förslag.
 
 ## Kolumnen `beslut`
 
