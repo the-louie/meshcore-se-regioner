@@ -28,18 +28,17 @@ Resten av sidan förklarar hur allt hänger ihop. Du behöver inte förstå det 
 
 ## Kortversionen
 
-Det finns tre nivåer. Varje repeater bär en kod från varje nivå: sitt län, `se` och `eu`.
+Det finns två nivåer. Varje repeater bär en kod från varje nivå: sitt län och `se`.
 När du skickar ett meddelande avgör scopet hur långt det färdas.
 
 | Nivå | Exempel | Betyder | Vem bestämmer |
 | --- | --- | --- | --- |
 | Län | `se-jkp` `se-vgr` `se-kro` | Alla repeatrar i länet. | Länet |
 | Sverige | `se` | Alla repeatrar i Sverige. | Alla län tillsammans |
-| Europa | `eu` | Reserverad för senare. Bärs nu, används inte än. | Alla län tillsammans |
 
 Om ett län antar förslaget efter pilot och alla faser är klara:
 
-- **Repeatrar** bär sitt län, `se` och `eu`.
+- **Repeatrar** bär sitt län och `se`.
 - **Bottar** begränsar sina kanalutskick till målgruppen, oftast länet. Default scope väljs efter
   vilka användare deras DM-tjänst ska nå.
 - **Companions** har `se` som standard, för att möjliggöra DM på radiovägar som tillåter `se`.
@@ -49,8 +48,8 @@ Om ett län antar förslaget efter pilot och alla faser är klara:
   blockering beslutar länet separat efter pilot: den kan bryta trafik även inom det egna länet.
 
 Det här är utgångsläget. Ett län kan välja annorlunda för det som bara angår länet, till exempel
-namnet, takten eller ett [lokalt namn](#lokala-namn) för en ort. Det som angår andra län, som `se`
-och `eu`, kräver att länen är överens.
+namnet, takten eller ett [lokalt namn](#lokala-namn) för en ort. Det som angår andra län, som `se`,
+kräver att länen är överens.
 
 Companions kommer sist, i fas 2. Sätter du ett scope på din companion innan repeatrarna runt dig är
 omställda når dina meddelanden **färre**, inte fler.
@@ -60,8 +59,9 @@ omställda når dina meddelanden **färre**, inte fler.
 Namnet bestäms där det används. Länets namn angår länet och behöver inget ja ovanifrån.
 
 - **Länet väljer namnet.** En förkortning (`se-jkp`), SCB-koden (`se06`) eller något annat som folk
-  i länet känner igen. Det enda som krävs är att namnet fungerar i en repeater och inte redan bärs
-  av ett annat län, se [CONTRIBUTING.md](CONTRIBUTING.md#vad-namnet-måste-klara).
+  i länet känner igen. Det enda som krävs är det gemensamma formatet – små bokstäver, siffror och
+  bindestreck – och att namnet inte redan bärs av ett annat län, se
+  [CONTRIBUTING.md](CONTRIBUTING.md#vad-namnet-måste-klara).
 - **Länet väljer takten.** Faserna nedan körs per län. Ett län som är klart behöver inte vänta på
   resten av landet, och ett län som inte vill byta behöver inte.
 - **Länet väljer sin trafikpolicy.** Om meddelanden utan scope ska blockeras, och var kanterna går,
@@ -69,7 +69,7 @@ Namnet bestäms där det används. Länets namn angår länet och behöver inget
 - **Utgångsläget är en gissning.** Namnen i listan är `se-` och tre bokstäver, valda för att ge
   varje län något att börja med utan att någon behöver fråga. Säger länet något annat är det länet
   som stämmer, och listan som ändras.
-- **Gemensamt är bara det som är gemensamt.** `se` och `eu` delas av alla, så där behövs enighet.
+- **Gemensamt är bara det som är gemensamt.** `se` delas av alla, så där behövs enighet.
   Grannlän som delar kantrepeatrar kommer överens sinsemellan.
 
 [REGIONER.md](REGIONER.md) visar vilka län som har bestämt sitt namn själva och vilka som
@@ -87,9 +87,10 @@ Utgångsläget för länens namn:
 
 - **Vedertagen förkortning först.** Jönköping är `jkp`, Stockholm `sth`.
 - **Annars en kort förkortning av länsnamnet.** Kronoberg är `kro`, Halland `hal`.
-- **Bara `a`–`z`.** Å och ä skrivs `a`, ö skrivs `o`. Inga stora bokstäver.
+- **Bara små bokstäver.** Å och ä skrivs `a`, ö skrivs `o`.
 
-Ett län som väljer något annat behöver inte följa de här punkterna, bara de tekniska gränserna.
+Ett län som väljer något annat behöver inte följa de två första punkterna. Den sista gäller alla:
+repeatern skiljer på `se-jkp` och `SE-JKP`, så ett namn ska bara kunna stavas på ett sätt.
 
 ### Länen
 
@@ -185,7 +186,7 @@ lista över namn den skickar vidare, och jämför koden mot listan.
 
 ## Så bestämmer en repeater
 
-En repeater i Mullsjö, i Jönköpings län, bär enligt utgångsläget den här listan: `*`, `se-jkp`, `se`, `eu`.
+En repeater i Mullsjö, i Jönköpings län, bär enligt utgångsläget den här listan: `*`, `se-jkp`, `se`.
 
 | Meddelande | Scope | Vad repeatern gör |
 | --- | --- | --- |
@@ -215,30 +216,39 @@ Fyra saker som folk brukar gå bet på:
 ## Nivåerna
 
 ```
-eu                Europa. Reserverad. Bärs nu, används inte än.
-└─ se             Alla repeatrar i Sverige.
-   ├─ se-jkp      Jönköpings län
-   ├─ se-vgr      Västra Götalands län
-   └─ …
+se             Alla repeatrar i Sverige.
+├─ se-jkp      Jönköpings län
+├─ se-vgr      Västra Götalands län
+└─ …
 ```
 
 Det en repeater i Jönköpings län faktiskt lagrar är en platt lista:
 
 ```
-*   se-jkp   se   eu
+*   se-jkp   se
 ```
 
 Trädet ovan är till för människor, inte för repeatern.
 
-### Varför `eu`?
+### Varför inte `eu`?
 
-Alla repeatrar bär `eu` redan nu, så att ett scope över landsgränser fungerar senare utan att någon
-behöver ställa om sin repeater igen. Använd inte `eu` på din companion eller dina kanaler än.
+Ett tidigare utkast lät alla repeatrar bära `eu` redan nu, "reserverad för senare". Det är borttaget:
+
+- **Ett scope är en etikett, inte ett lås.** Vem som helst kan skicka med `eu`, och varje repeater
+  som bär det skickar vidare. Inom Sverige skulle `eu` bete sig precis som `se` från första dagen.
+- **Det öppnar gränsen.** Bär repeatrar i Norge, Danmark eller Finland också `eu` floodar deras
+  `eu`-trafik in i Sverige, och vår ut, där täckningen möts. Det har ingen bestämt.
+- **Det är inget län att bestämma ensamt,** och inte ens Sveriges län tillsammans: ett scope över
+  landsgränser kräver att grannländerna är med.
+- **Vinsten är liten.** Att lägga till ett namn senare är ett kommando per repeater, och ett
+  gränsöverskridande scope behöver ändå en egen utrullning och pilot.
+
+Bär inte `eu` på repeatrar, companions eller kanaler förrän ett sådant beslut finns.
 
 ## Utrullning
 
 Varje län rullar ut i sin egen takt. Inom länet gäller ordningen: varje fas börjar först när den förra
-är klar i länet. Ett län behöver inte vänta på andra län, utom där en fas berör dem (`se`, `eu` och
+är klar i länet. Ett län behöver inte vänta på andra län, utom där en fas berör dem (`se` och
 kantrepeatrar mot ett grannlän).
 
 | Fas | Vem | Vad |
@@ -253,7 +263,7 @@ kantrepeatrar mot ett grannlän).
 
 ### Fas 1: Repeatrar
 
-Fas 1 är förberedande: lägg till länet, `se` och `eu` utan att ta bort gamla namn eller
+Fas 1 är förberedande: lägg till länet och `se` utan att ta bort gamla namn eller
 ändra befintlig trafikpolicy. Companions och bottar ändrar ingenting i den här fasen. Repeaterns
 default scope och hoppgränser behålls också.
 
@@ -294,7 +304,7 @@ För både vanliga repeatrar och kantrepeatrar, firmware 1.16 eller nyare, när 
 inte redan finns:
 
 ```
-region def se-jkp|* se|* eu
+region def se-jkp|* se
 region save
 ```
 
@@ -304,8 +314,7 @@ redan, lägg bara till de saknade med `region put <namn> *` och behåll befintli
 flaggor. Kör inte hela raden ovan över en befintlig konfiguration utan att granska ändringarna.
 Ett fel kan lämna en delvis ändrad lista: kontrollera med `region` innan du sparar eller fortsätter.
 
-Har länet valt att behålla sin SCB-kod, till exempel `se06`, finns namnet redan: lägg bara till `se`
-och `eu`.
+Har länet valt att behålla sin SCB-kod, till exempel `se06`, finns namnet redan: lägg bara till `se`.
 
 Ändra inte `region allowf *`, `region denyf *`, default scope eller hoppgränser i fas 1.
 
@@ -340,7 +349,6 @@ hemregionen var `*` kan listan se ut så här:
 *^ F
 se-jkp F
 se F
-eu F
 ```
 
 `F` betyder att repeatern skickar vidare det namnet. `^` markerar hemregion, inte default scope.
@@ -584,8 +592,9 @@ Det här är inte avgjort, och synpunkter är välkomna som issues eller pull re
    är en första gissning.
 4. **MQTT-koderna.** meshat.se använder flygplatskoder per län för MQTT. Kan länets namn här ersätta
    dem, så att det bara finns ett kodsystem? Det avgör varje län.
-5. **`europe`.** meshat.se har både `eu` och `europe`. Förslaget använder bara `eu`.
-6. **Tidplan.** Varje län sätter sin egen. Inga datum är satta för `se` och `eu`.
+5. **`eu` och `europe`.** meshat.se har båda. Förslaget använder ingen av dem; ett scope över
+   landsgränser beslutas, om det behövs, tillsammans med grannländerna.
+6. **Tidplan.** Varje län sätter sin egen. Inga datum är satta för `se`.
 
 ## Nästa steg
 

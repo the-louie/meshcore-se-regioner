@@ -18,16 +18,24 @@ Har du inte Python går det bra att bara ändra CSV-filen – någon annan kör 
 
 ## Vad namnet måste klara
 
-Det här är tekniska gränser, inte regler för vad länet får välja:
+Länet väljer namnet, men formatet är gemensamt. Ett namn används inte bara i det egna länet:
+grannlänets kantrepeatrar, companions i andra län och bottar måste stava det exakt likadant. Därför
+gäller samma format för alla, samma som i [MeshCore Canadas standard](https://github.com/MeshCore-ca/MeshCore-Canada/blob/main/docs/config/standard.md#names-and-on-air-tags):
 
-- Bara `a`–`z`, `0`–`9` och enkla bindestreck, inget bindestreck först eller sist. Å och ä skrivs
-  `a`, ö skrivs `o`. Inga stora bokstäver: repeatern skiljer på `se-jkp` och `SE-JKP`.
-- Högst 30 tecken, det är vad en repeater sparar.
-- Unikt i landet. Två län kan inte bära samma namn, eftersom en repeater inte kan se skillnad.
+- **Bara små bokstäver `a`–`z`, siffror `0`–`9` och enkla bindestreck,** inget bindestreck först
+  eller sist. Å och ä skrivs `a`, ö skrivs `o`.
+- **Högst 29 tecken.** En repeater och en companion sparar högst 30.
+- **Unikt i landet.** Två län kan inte bära samma namn, eftersom en repeater inte kan se skillnad.
 
-Inom det väljer länet fritt: en förkortning (`se-jkp`), SCB-koden (`se06`) eller något annat som
-folk i länet känner igen. Utgångsläget i listan är `se-` och tre bokstäver, men det är bara ett
-förslag.
+Varför bara små bokstäver: repeatern räknar fram scopets nyckel ur namnet exakt som det är stavat,
+utan att göra om stora bokstäver till små, och appen gör det inte heller. `se-jkp`, `SE-JKP` och
+`Se-Jkp` blir tre olika scopes som aldrig når varandra. Med bara små bokstäver finns det ett sätt
+att stava varje namn. Är koden du vill använda skriven med stora bokstäver någon annanstans, som
+SCB:s `SE1408`, skriv den med små: `se1408`.
+
+Inom formatet väljer länet fritt: en förkortning (`se-jkp`), SCB-koden (`se06`) eller något annat
+som folk i länet känner igen. Utgångsläget i listan är det namn länets repeatrar redan bär, eller
+annars `se-` och tre bokstäver, men det är bara ett förslag.
 
 ## Kolumnen `beslut`
 

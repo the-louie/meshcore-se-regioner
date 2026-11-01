@@ -18,10 +18,11 @@ KOLUMNER = ["scb_lan", "lan", "region", "beslut"]
 GRANNLAN_KOLUMNER = ["scb_lan", "lan", "scb_grannlan", "grannlan", "via"]
 BESLUT = {"forslag", "lokalt"}
 VIA = {"land", "vatten", "omvand", "lokal"}
-# Vad repeatern klarar, inte en namnregel: a-z, 0-9 och enkla bindestreck, högst 30 tecken.
-# Vilket namn länet väljer inom det bestämmer länet.
+# Det gemensamma formatet (CONTRIBUTING.md): små a-z, 0-9 och enkla bindestreck, högst 29 tecken.
+# Repeatern skiljer på stora och små bokstäver, så bara små tillåts. Vilket namn länet väljer
+# inom formatet bestämmer länet.
 NAMN = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
-NAMN_MAX = 30
+NAMN_MAX = 29
 SCB_LAN = re.compile(r"^[0-9]{2}$")
 SWEDISH_ORDER = str.maketrans({"å": "{", "ä": "|", "ö": "}"})
 
@@ -57,7 +58,7 @@ def validate(rows):
         if not NAMN.match(r["region"]) or len(r["region"]) > NAMN_MAX:
             errors.append(
                 f"{where}: '{r['region']}' går inte att använda som region "
-                f"(a-z, 0-9 och enkla bindestreck, högst {NAMN_MAX} tecken)"
+                f"(små a-z, 0-9 och enkla bindestreck, högst {NAMN_MAX} tecken)"
             )
         if r["beslut"] not in BESLUT:
             errors.append(f"{where}: okänt beslut '{r['beslut']}'")
