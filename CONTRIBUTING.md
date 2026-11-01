@@ -28,8 +28,10 @@ gäller samma format för alla, samma som i [MeshCore Canadas standard](https://
 - **Unikt i landet.** Två län kan inte bära samma namn, eftersom en repeater inte kan se skillnad.
 
 Varför bara små bokstäver: repeatern räknar fram scopets nyckel ur namnet exakt som det är stavat,
-utan att göra om stora bokstäver till små, och appen gör det inte heller. `se-jkp`, `SE-JKP` och
-`Se-Jkp` blir tre olika scopes som aldrig når varandra. Med bara små bokstäver finns det ett sätt
+utan att göra om stora bokstäver till små ([firmwarekällan](https://github.com/meshcore-dev/MeshCore/blob/main/src/helpers/RegionMap.cpp)).
+Companionen får nyckeln färdig från appen, och appens källkod är inte öppen, så räkna inte med att
+den rättar stavningen. MeshCore Canadas guide säger samma sak: skriv namnet med små bokstäver.
+`se-jkp`, `SE-JKP` och `Se-Jkp` blir tre olika scopes som aldrig når varandra. Med bara små bokstäver finns det ett sätt
 att stava varje namn. Är koden du vill använda skriven med stora bokstäver någon annanstans, som
 SCB:s `SE1408`, skriv den med små: `se1408`.
 
@@ -50,7 +52,8 @@ ett förslag.
 
 En ort eller en grupp repeatrar kan komma överens om ett eget namn för ett mindre område, till exempel
 `se-vgr-gbg`, och bära det bredvid länets namn. Det hör till dem som använder det och står inte i
-listan här. Se *Lokala namn* i [README.md](README.md#lokala-namn).
+listan här, men det följer samma format som länens namn ovan. Se *Lokala namn* i
+[README.md](README.md#lokala-namn).
 
 ## Ändra ett grannlän
 

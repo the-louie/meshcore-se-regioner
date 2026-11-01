@@ -4,10 +4,9 @@ Den här filen genereras från [data/regioner.csv](data/regioner.csv) och
 [data/grannlan.csv](data/grannlan.csv) med `python3 scripts/build.py`.
 Ändra inte här – ändra i CSV-filerna och kör skriptet.
 
-**Varje län bestämmer sin egen region.** Namnen nedan är ett utgångsläge. *Beslut* visar om
-länet har bestämt sig: *förslag* = utgångsläget, ingen har sagt något än · *lokalt* = länet har
-valt namnet själv. Vill ert län ha ett annat namn, till exempel SCB-koden, ändrar ni det. Se
-[CONTRIBUTING.md](CONTRIBUTING.md).
+**Varje län bestämmer sin egen region.** Där *Beslut* är *lokalt* har länet valt namnet själv;
+övriga namn är ett utgångsläge, och *förslag* betyder att ingen i länet har sagt något än. Vill
+ert län ha ett annat namn, till exempel SCB-koden, ändrar ni det. Se [CONTRIBUTING.md](CONTRIBUTING.md).
 
 **Grannlän:** län som ligger inom räckhåll från länet, från [data/grannlan.csv](data/grannlan.csv).
 En kantrepeater kan bära ett av dem. Se *Grannlän* i [README.md](README.md#grannlän).

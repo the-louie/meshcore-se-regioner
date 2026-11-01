@@ -28,7 +28,7 @@ Resten av sidan förklarar hur allt hänger ihop. Du behöver inte förstå det 
 
 ## Kortversionen
 
-Det finns två nivåer. Varje repeater bär en kod från varje nivå: sitt län och `se`.
+Det finns två nivåer. Varje repeater bär ett namn från varje nivå: sitt län och `se`.
 När du skickar ett meddelande avgör scopet hur långt det färdas.
 
 | Nivå | Exempel | Betyder | Vem bestämmer |
@@ -75,26 +75,31 @@ Namnet bestäms där det används. Länets namn angår länet och behöver inget
 [REGIONER.md](REGIONER.md) visar vilka län som har bestämt sitt namn själva och vilka som
 fortfarande har utgångsläget.
 
-## Så är namnen uppbyggda
+## Så är utgångsläget uppbyggt
+
+Utgångsläget är ett förslag för län som ännu inte har valt. Det är uppbyggt så här:
 
 ```
 se - jkp
-│    └──── län, i utgångsläget tre bokstäver
+│    └──── länet, tre bokstäver
 └───────── Sverige
 ```
 
-Utgångsläget för länens namn:
+- **Vedertagen förkortning först.** Jönköpings län är `jkp`, Stockholms län `sth`.
+- **Annars en kort förkortning av länsnamnet.** Kronobergs län är `kro`, Hallands län `hal`.
 
-- **Vedertagen förkortning först.** Jönköping är `jkp`, Stockholm `sth`.
-- **Annars en kort förkortning av länsnamnet.** Kronoberg är `kro`, Halland `hal`.
-- **Bara små bokstäver.** Å och ä skrivs `a`, ö skrivs `o`.
+Ett län som väljer något annat behöver inte följa de här punkterna, och namnet behöver inte se ut
+så här: `se06` går lika bra. Det som gäller alla namn är det gemensamma formatet, se
+[CONTRIBUTING.md](CONTRIBUTING.md#vad-namnet-måste-klara): bara små bokstäver, siffror och
+bindestreck. Repeatern skiljer på `se-jkp` och `SE-JKP`, så ett namn ska bara kunna stavas på ett
+sätt.
 
-Ett län som väljer något annat behöver inte följa de två första punkterna. Den sista gäller alla:
-repeatern skiljer på `se-jkp` och `SE-JKP`, så ett namn ska bara kunna stavas på ett sätt.
+### Länens förslag
 
-### Länen
+Förslaget med tre bokstäver för varje län, och SCB-namnet det ersätter. Vad varje län faktiskt
+har valt står i [REGIONER.md](REGIONER.md), inte här.
 
-| Län | Utgångsläge | Ersätter |
+| Län | Förslag | Ersätter |
 | --- | --- | --- |
 | Stockholm | `se-sth` | `se01` |
 | Uppsala | `se-upp` | `se03` |
@@ -118,15 +123,16 @@ repeatern skiljer på `se-jkp` och `SE-JKP`, så ett namn ska bara kunna stavas 
 | Västerbotten | `se-vbt` | `se24` |
 | Norrbotten | `se-nbt` | `se25` |
 
-Vad varje län faktiskt har valt står i [REGIONER.md](REGIONER.md). Källan är
-[data/regioner.csv](data/regioner.csv).
+Källan till REGIONER.md är [data/regioner.csv](data/regioner.csv).
 
 ### Lokala namn
 
 Länet är den minsta nivån i förslaget. Vill en ort eller en grupp repeatrar ha ett mindre område,
 till exempel Göteborg i ett stort län, kan de komma överens om ett eget namn som `se-vgr-gbg` och
-bära det bredvid länets. Det är deras namn och deras beslut: det står inte i listan här och förslaget
-har inga regler för det, utöver att det ska fungera i en repeater och inte krocka med ett läns namn.
+bära det bredvid länets. Det är deras namn och deras beslut: det står inte i listan här. Det enda
+förslaget kräver är samma gemensamma format som för länen – bara små bokstäver, siffror och
+bindestreck – eftersom alla som ska använda namnet måste stava det likadant, och att det inte
+krockar med ett läns namn.
 
 Ett lokalt namn fungerar bara på de repeatrar som bär det. Bindestrecken betyder ingenting för
 repeatern: att bära `se-vgr` betyder inte att bära `se-vgr-gbg`.
@@ -139,15 +145,16 @@ Ett tidigare utkast hade en nivå till, en kod för varje kommun. Den är bortta
 - **En kommun har sällan nog med repeatrar** för att ett scope ska avgränsa något. De flesta
   radiovägar går genom flera kommuner.
 - **Färre namn blir oftare rätt stavade,** och rätt stavat är det enda som räknas.
-- **Kommunkoderna hann knappt användas.** I Jönköpings län syntes ingen av dem i trafiken i oktober
-  2026, så det finns lite eller inget att städa bort. Listan ligger kvar i historiken.
+- **Kommunkoderna hann knappt användas.** I Jönköpings län syntes ingen av dem i trafiken mellan
+  30 augusti och 7 oktober 2026, så det finns lite eller inget att städa bort. Listan ligger kvar i
+  historiken.
 
 Behöver en ort ett eget område används ett [lokalt namn](#lokala-namn).
 
 ### Varför inte flygplatskoder, som i Kanada?
 
-Utgångsläget använder inte flygplatskoder, men ett län som hellre vill det kan välja en. Skälen till
-utgångsläget:
+Utgångsläget använder inte flygplatskoder, men ett län som hellre vill det kan välja en, skriven med
+små bokstäver: `jkg`, inte `JKG`. Skälen till utgångsläget:
 
 - De flesta län har ingen flygplats som alla känner till, och vissa har flera.
 - Flygplatskoderna är ofta inte det folk säger. Jönköping är `JKG` fast alla skriver Jkpg.
@@ -277,8 +284,10 @@ skickar nästa. `region def` svarar med regionträdet, inte `OK`.
 ver
 ```
 
-Slå sedan upp ditt län i [REGIONER.md](REGIONER.md) och använd det namn länet har valt. Exemplen
-nedan gäller en repeater i Jönköpings län med utgångsläget `se-jkp`.
+Slå sedan upp ditt län i [REGIONER.md](REGIONER.md). Fortsätt bara om *Beslut* är *lokalt*, alltså
+om länet har valt sitt namn. Står det något annat har länet inte bestämt sig än, och ett namn som
+läggs in nu kan behöva bytas. Exemplen nedan gäller en repeater i Jönköpings län som har valt
+`se-jkp`.
 
 Avgör också om din repeater är en vanlig repeater eller en **kantrepeater**. En kantrepeater pratar
 regelbundet med repeatrar i ett annat län. Alla andra är vanliga repeatrar, även de som står nära en
@@ -436,7 +445,7 @@ standard-scope.
 
 Haken: en kanal utan eget scope använder också din standard, `se`, och kan då spridas nationellt
 inom hoppgränsen. Det är förslagets val för Public om det antas efter pilot, men inte för
-testkanaler och bottar. Därför sätts de till länet i steg 2.
+testkanaler och bottar. Därför får testkanaler länet och bottkanaler botens målgrupp i steg 2.
 
 ### Fas 3: Städning
 
@@ -516,8 +525,8 @@ Listan i [data/grannlan.csv](data/grannlan.csv) är ett utgångsläge, framräkn
 - Varje län vars landyta den utökade ytan når blir grannlän.
 - Ett par gäller alltid åt båda håll.
 
-Det ger 50 par av län. Jönköpings län får bland annat `se-vgr` och `se-ost`, Västra Götaland får
-`se-var` tvärs över Vänern, och Gotland får `se-kal` och `se-sth`.
+Det ger 50 par av län. Jönköpings län får bland annat `se-vgr` och `se-ost` över land, och
+Gotland får `se-kal` och `se-sth` över vatten.
 
 Listan säger var en kantrepeater *kan* behövas, inte att den behövs. Den bygger på avstånd på
 kartan och vet ingenting om terräng, antennhöjd eller vilka repeatrar som faktiskt hör varandra.
@@ -595,6 +604,10 @@ Det här är inte avgjort, och synpunkter är välkomna som issues eller pull re
 5. **`eu` och `europe`.** meshat.se har båda. Förslaget använder ingen av dem; ett scope över
    landsgränser beslutas, om det behövs, tillsammans med grannländerna.
 6. **Tidplan.** Varje län sätter sin egen. Inga datum är satta för `se`.
+7. **Hur länen kommer överens.** `se` och nationell Public angår alla län, men förslaget säger inte
+   hur länen tar ett gemensamt beslut, eller vem som talar för ett län. Ett förslag är att ett
+   gemensamt beslut tas som ett issue här, där varje län som har valt sitt namn (*lokalt*) får säga
+   sitt.
 
 ## Nästa steg
 

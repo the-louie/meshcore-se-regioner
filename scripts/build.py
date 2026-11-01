@@ -57,7 +57,7 @@ def validate(rows):
             errors.append(f"{where}: SCB-länskoden är inte två siffror")
         if not NAMN.match(r["region"]) or len(r["region"]) > NAMN_MAX:
             errors.append(
-                f"{where}: '{r['region']}' går inte att använda som region "
+                f"{where}: '{r['region']}' följer inte det gemensamma formatet "
                 f"(små a-z, 0-9 och enkla bindestreck, högst {NAMN_MAX} tecken)"
             )
         if r["beslut"] not in BESLUT:
@@ -108,10 +108,9 @@ def render(rows, grannlan):
         "[data/grannlan.csv](data/grannlan.csv) med `python3 scripts/build.py`.",
         "Ändra inte här – ändra i CSV-filerna och kör skriptet.",
         "",
-        "**Varje län bestämmer sin egen region.** Namnen nedan är ett utgångsläge. *Beslut* visar om",
-        "länet har bestämt sig: *förslag* = utgångsläget, ingen har sagt något än · *lokalt* = länet har",
-        "valt namnet själv. Vill ert län ha ett annat namn, till exempel SCB-koden, ändrar ni det. Se",
-        "[CONTRIBUTING.md](CONTRIBUTING.md).",
+        "**Varje län bestämmer sin egen region.** Där *Beslut* är *lokalt* har länet valt namnet själv;",
+        "övriga namn är ett utgångsläge, och *förslag* betyder att ingen i länet har sagt något än. Vill",
+        "ert län ha ett annat namn, till exempel SCB-koden, ändrar ni det. Se [CONTRIBUTING.md](CONTRIBUTING.md).",
         "",
         "**Grannlän:** län som ligger inom räckhåll från länet, från [data/grannlan.csv](data/grannlan.csv).",
         "En kantrepeater kan bära ett av dem. Se *Grannlän* i [README.md](README.md#grannlän).",
