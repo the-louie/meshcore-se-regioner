@@ -7,17 +7,22 @@ Kör:  python3 scripts/build.py          (validera + skriv REGIONER.md)
 import csv
 import re
 import sys
-from collections import Counter, OrderedDict
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CSV = ROOT / "data" / "regioner.csv"
 GRANNLAN = ROOT / "data" / "grannlan.csv"
 OUT = ROOT / "REGIONER.md"
-GRUNDER = {"vedertagen", "kandidat", "krock", "reserv"}
+KOLUMNER = ["scb_lan", "lan", "region", "beslut"]
+GRANNLAN_KOLUMNER = ["scb_lan", "lan", "scb_grannlan", "grannlan", "via"]
+BESLUT = {"forslag", "lokalt"}
 VIA = {"land", "vatten", "omvand", "lokal"}
-GRANNLAN_KOLUMNER = ["scb_kommun", "kommun", "scb_grannlan", "grannlan", "via"]
-KOD = re.compile(r"^[a-z]{3}$")
+# Vad repeatern klarar, inte en namnregel: a-z, 0-9 och enkla bindestreck, högst 30 tecken.
+# Vilket namn länet väljer inom det bestämmer länet.
+NAMN = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
+NAMN_MAX = 30
+SCB_LAN = re.compile(r"^[0-9]{2}$")
 SWEDISH_ORDER = str.maketrans({"å": "{", "ä": "|", "ö": "}"})
 
 
@@ -26,131 +31,104 @@ def swedish_sort_key(name):
     return name.casefold().translate(SWEDISH_ORDER)
 
 
-def load():
-    with CSV.open(newline="", encoding="utf-8") as f:
+def load(path):
+    with path.open(newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
 
 
-def load_grannlan():
-    with GRANNLAN.open(newline="", encoding="utf-8") as f:
-        return list(csv.DictReader(f))
+def saknade_kolumner(rows, kolumner, namn):
+    for nr, r in enumerate(rows, start=2):
+        saknas = [k for k in kolumner if r.get(k) is None]
+        if saknas:
+            return [f"{namn} rad {nr}: saknar {', '.join(saknas)}"]
+    return []
+
+
+def validate(rows):
+    errors = saknade_kolumner(rows, KOLUMNER, "regioner.csv")
+    if errors:
+        return errors
+    if len(rows) != 21:
+        errors.append(f"förväntade 21 län, hittade {len(rows)}")
+    for r in rows:
+        where = f"{r['lan']} ({r['scb_lan']})"
+        if not SCB_LAN.match(r["scb_lan"]):
+            errors.append(f"{where}: SCB-länskoden är inte två siffror")
+        if not NAMN.match(r["region"]) or len(r["region"]) > NAMN_MAX:
+            errors.append(
+                f"{where}: '{r['region']}' går inte att använda som region "
+                f"(a-z, 0-9 och enkla bindestreck, högst {NAMN_MAX} tecken)"
+            )
+        if r["beslut"] not in BESLUT:
+            errors.append(f"{where}: okänt beslut '{r['beslut']}'")
+    for col, vad in (("scb_lan", "SCB-länskoden"), ("lan", "länsnamnet"), ("region", "regionen")):
+        for v, n in Counter(r[col] for r in rows).items():
+            if n > 1:
+                errors.append(f"{vad} '{v}' står på {n} rader")
+    return errors
 
 
 def validate_grannlan(rows, grannlan):
-    errors = []
-    for nr, g in enumerate(grannlan, start=2):
-        saknas = [k for k in GRANNLAN_KOLUMNER if g.get(k) is None]
-        if saknas:
-            return [f"grannlan.csv rad {nr}: saknar {', '.join(saknas)}"]
-    kommuner = {r["scb_kommun"]: r for r in rows}
+    errors = saknade_kolumner(grannlan, GRANNLAN_KOLUMNER, "grannlan.csv")
+    if errors:
+        return errors
     lan = {r["scb_lan"]: r["lan"] for r in rows}
     for g in grannlan:
-        where = f"grannlan.csv: {g['kommun']} ({g['scb_kommun']}) → {g['grannlan']}"
-        kommun = kommuner.get(g["scb_kommun"])
-        if not kommun:
-            errors.append(f"{where}: kommunkoden finns inte i regioner.csv")
-            continue
-        if kommun["kommun"] != g["kommun"]:
-            errors.append(f"{where}: kommunen heter '{kommun['kommun']}' i regioner.csv")
-        if g["scb_grannlan"] not in lan:
-            errors.append(f"{where}: länskoden {g['scb_grannlan']} finns inte i regioner.csv")
-        elif lan[g["scb_grannlan"]] != g["grannlan"]:
-            errors.append(f"{where}: länet heter '{lan[g['scb_grannlan']]}' i regioner.csv")
-        if g["scb_grannlan"] == kommun["scb_lan"]:
+        where = f"grannlan.csv: {g['lan']} ({g['scb_lan']}) → {g['grannlan']}"
+        for kod, namn in ((g["scb_lan"], g["lan"]), (g["scb_grannlan"], g["grannlan"])):
+            if kod not in lan:
+                errors.append(f"{where}: länskoden {kod} finns inte i regioner.csv")
+            elif lan[kod] != namn:
+                errors.append(f"{where}: län {kod} heter '{lan[kod]}' i regioner.csv")
+        if g["scb_grannlan"] == g["scb_lan"]:
             errors.append(f"{where}: det egna länet kan inte vara grannlän")
         if g["via"] not in VIA:
             errors.append(f"{where}: okänt värde i via '{g['via']}'")
-    for (kommun, grann), n in Counter((g["scb_kommun"], g["scb_grannlan"]) for g in grannlan).items():
+    par = Counter((g["scb_lan"], g["scb_grannlan"]) for g in grannlan)
+    for (a, b), n in par.items():
         if n > 1:
-            errors.append(f"grannlan.csv: {kommun} → {grann} står {n} gånger")
-    par = {(g["scb_kommun"][:2], g["scb_grannlan"]) for g in grannlan}
+            errors.append(f"grannlan.csv: {lan.get(a, a)} → {lan.get(b, b)} står {n} gånger")
     for a, b in sorted(par):
         if (b, a) not in par:
             errors.append(f"grannlan.csv: {lan.get(a, a)} når {lan.get(b, b)} men inte tvärtom")
     return errors
 
 
-def validate(rows):
-    errors = []
-    if len(rows) != 290:
-        errors.append(f"förväntade 290 kommuner, hittade {len(rows)}")
-    lan_kod = {}
-    for r in rows:
-        where = f"{r['kommun']} ({r['scb_kommun']})"
-        if not KOD.match(r["lan_kod"]):
-            errors.append(f"{where}: länskoden '{r['lan_kod']}' är inte tre tecken a-z")
-        if not KOD.match(r["kommun_kod"]):
-            errors.append(
-                f"{where}: kommunkoden '{r['kommun_kod']}' är inte tre tecken a-z"
-            )
-        if r["grund"] not in GRUNDER:
-            errors.append(f"{where}: okänd grund '{r['grund']}'")
-        if not r["scb_kommun"].startswith(r["scb_lan"]):
-            errors.append(f"{where}: SCB-kommunkoden hör inte till län {r['scb_lan']}")
-        if lan_kod.setdefault(r["scb_lan"], r["lan_kod"]) != r["lan_kod"]:
-            errors.append(f"{where}: länet {r['scb_lan']} har flera olika länskoder")
-    for kod, n in Counter(lan_kod.values()).items():
-        if n > 1:
-            errors.append(f"länskoden '{kod}' används av {n} län")
-    for (lan, kod), n in Counter((r["lan_kod"], r["kommun_kod"]) for r in rows).items():
-        if n > 1:
-            errors.append(f"se-{lan}-{kod} används av {n} kommuner i samma län")
-    return errors
-
 
 def render(rows, grannlan):
-    lan_kod = {r["scb_lan"]: r["lan_kod"] for r in rows}
+    region = {r["scb_lan"]: r["region"] for r in rows}
     grannar = {}
     for g in grannlan:
-        grannar.setdefault(g["scb_kommun"], []).append(g["scb_grannlan"])
-    by_lan = OrderedDict()
-    for r in rows:
-        by_lan.setdefault(r["scb_lan"], []).append(r)
+        grannar.setdefault(g["scb_lan"], []).append(g["scb_grannlan"])
     out = [
         "# Alla regioner",
         "",
-        "Den här filen genereras från [data/regioner.csv](data/regioner.csv) med `python3 scripts/build.py`.",
-        "Ändra inte här – ändra i CSV-filen och kör skriptet.",
+        "Den här filen genereras från [data/regioner.csv](data/regioner.csv) och",
+        "[data/grannlan.csv](data/grannlan.csv) med `python3 scripts/build.py`.",
+        "Ändra inte här – ändra i CSV-filerna och kör skriptet.",
         "",
-        "**Grund:** *vedertagen* = känd förkortning med belägg · *kandidat* = förkortning med svagt belägg ·",
-        "*krock* = ändrad eftersom tre första bokstäverna krockar inom länet · *reserv* = tre första bokstäverna.",
+        "**Varje län bestämmer sin egen region.** Namnen nedan är ett utgångsläge. *Beslut* visar om",
+        "länet har bestämt sig: *förslag* = utgångsläget, ingen har sagt något än · *lokalt* = länet har",
+        "valt namnet själv. Vill ert län ha ett annat namn, till exempel SCB-koden, ändrar ni det. Se",
+        "[CONTRIBUTING.md](CONTRIBUTING.md).",
         "",
-        "**Grannlän:** län som ligger inom räckhåll från kommunen, från [data/grannlan.csv](data/grannlan.csv).",
-        "En kantrepeater i kommunen kan bära ett av dem. Se *Grannlän* i [README.md](README.md#grannlän).",
+        "**Grannlän:** län som ligger inom räckhåll från länet, från [data/grannlan.csv](data/grannlan.csv).",
+        "En kantrepeater kan bära ett av dem. Se *Grannlän* i [README.md](README.md#grannlän).",
         "",
-        "## Hitta ditt län",
-        "",
+        "| Län | Region | Beslut | Ersätter | Grannlän |",
+        "| --- | --- | --- | --- | --- |",
     ]
-    for ks in by_lan.values():
-        out.append(f"- [{ks[0]['lan']}](#se-{ks[0]['lan_kod']})")
+    for r in sorted(rows, key=lambda r: r["scb_lan"]):
+        beslut = {"forslag": "förslag", "lokalt": "lokalt"}[r["beslut"]]
+        grann = ", ".join(f"`{region[g]}`" for g in sorted(grannar.get(r["scb_lan"], [])))
+        out.append(f"| {r['lan']} | `{r['region']}` | {beslut} | `se{r['scb_lan']}` | {grann} |")
     out.append("")
-    for lan, ks in by_lan.items():
-        lk = ks[0]["lan_kod"]
-        out += [
-            f'<a id="se-{lk}"></a>',
-            "",
-            f"## {ks[0]['lan']} – `se-{lk}`",
-            "",
-            f"Ersätter `se{lan}`.",
-            "",
-            "| Kommun | Region | Ersätter | Grund | Alternativ | Grannlän |",
-            "| --- | --- | --- | --- | --- | --- |",
-        ]
-        for r in sorted(ks, key=lambda r: swedish_sort_key(r["kommun"])):
-            alt = ", ".join(f"`{a}`" for a in r["alternativ"].split())
-            grann = ", ".join(
-                f"`se-{lan_kod[g]}`" for g in sorted(grannar.get(r["scb_kommun"], []))
-            )
-            out.append(
-                f"| {r['kommun']} | `se-{lk}-{r['kommun_kod']}` | `se{r['scb_kommun']}` | {r['grund']} | {alt} | {grann} |"
-            )
-        out.append("")
     return "\n".join(out)
 
 
 def main():
-    rows = load()
-    grannlan = load_grannlan()
+    rows = load(CSV)
+    grannlan = load(GRANNLAN)
     errors = validate(rows)
     if not errors:
         errors = validate_grannlan(rows, grannlan)
@@ -162,10 +140,10 @@ def main():
         if not OUT.exists() or OUT.read_text(encoding="utf-8") != text:
             print("FEL: REGIONER.md är inte aktuell – kör python3 scripts/build.py")
             return 1
-        print(f"OK: {len(rows)} kommuner, inga krockar, REGIONER.md aktuell")
+        print(f"OK: {len(rows)} län, inga krockar, REGIONER.md aktuell")
         return 0
     OUT.write_text(text, encoding="utf-8")
-    print(f"OK: {len(rows)} kommuner, inga krockar, skrev {OUT.name}")
+    print(f"OK: {len(rows)} län, inga krockar, skrev {OUT.name}")
     return 0
 
 

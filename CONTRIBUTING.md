@@ -1,53 +1,62 @@
 # Bidra
 
-Förslaget blir bara bra om folk som bor på orten säger vad orten faktiskt kallas. Alla koder i
-[data/regioner.csv](data/regioner.csv) går att ändra med en pull request.
+Varje län bestämmer sin egen region. Listan i [data/regioner.csv](data/regioner.csv) är ett
+utgångsläge som går att ändra med en pull request, och den som är aktiv i länet har sista ordet om
+länets rad.
 
-## Ändra en kod
+## Ändra ert läns region
 
-1. Ändra raden för din kommun i `data/regioner.csv`.
-2. Kör `python3 scripts/build.py`. Skriptet kontrollerar reglerna och skriver om `REGIONER.md`.
-3. Skicka en pull request med båda filerna. Skriv i beskrivningen **varför** koden är bättre.
+1. Kom överens i länet. Det är ni som bär namnet på era repeatrar, så det är ni som väljer det.
+2. Ändra länets rad i `data/regioner.csv`: skriv namnet i kolumnen `region` och sätt `beslut` till
+   `lokalt`.
+3. Kör `python3 scripts/build.py`. Skriptet kontrollerar raden och skriver om `REGIONER.md`.
+4. Skicka en pull request med båda filerna. Skriv i beskrivningen var beslutet togs, till exempel
+   länets Discordkanal eller en träff.
 
-Har du inte Python går det bra att bara ändra CSV-filen och beskriva ändringen – någon annan kör skriptet.
-Du kan också öppna ett issue i stället för en pull request.
+Har du inte Python går det bra att bara ändra CSV-filen – någon annan kör skriptet. Du kan också
+öppna ett issue i stället för en pull request.
 
-## Regler för koderna
+## Vad namnet måste klara
 
-- Exakt tre tecken, bara `a`–`z`. Å och ä skrivs `a`, ö skrivs `o`.
-- Koden måste vara unik **inom länet**. Samma kommunkod får finnas i olika län.
-- Prioritetsordning:
-  1. En förkortning som folk på orten redan använder (`gbg`, `jkp`, `vxo`).
-  2. Annars de tre första bokstäverna i kommunnamnet.
-- Krockar två kommuner i samma län behåller den större sin naturliga kod.
-- Reglerna är till för att fylla luckor. Vet du vad orten kallas går det före dem.
+Det här är tekniska gränser, inte regler för vad länet får välja:
 
-## Kolumnen `grund`
+- Bara `a`–`z`, `0`–`9` och enkla bindestreck, inget bindestreck först eller sist. Å och ä skrivs
+  `a`, ö skrivs `o`. Inga stora bokstäver: repeatern skiljer på `se-jkp` och `SE-JKP`.
+- Högst 30 tecken, det är vad en repeater sparar.
+- Unikt i landet. Två län kan inte bära samma namn, eftersom en repeater inte kan se skillnad.
+
+Inom det väljer länet fritt: en förkortning (`se-jkp`), SCB-koden (`se06`) eller något annat som
+folk i länet känner igen. Utgångsläget i listan är `se-` och tre bokstäver, men det är bara ett
+förslag.
+
+## Kolumnen `beslut`
 
 | Värde | Betyder |
 | --- | --- |
-| `vedertagen` | Känd förkortning. Kräver belägg i pull requesten: lokalpress, föreningar, företag, skyltar. |
-| `kandidat` | Förkortning med svagt belägg. Behöver bekräftas av folk på orten. |
-| `krock` | Tre första bokstäverna krockade inom länet, så koden är ändrad. |
-| `reserv` | Tre första bokstäverna. |
+| `forslag` | Utgångsläget. Ingen i länet har bestämt något än. |
+| `lokalt` | Länet har valt namnet själv. |
 
-Vill du flytta en kod från `kandidat` till `vedertagen`, eller tillbaka till `reserv`: skriv att du bor
-eller är aktiv på orten och vad ni faktiskt säger. Det väger tyngre än en webbsökning.
+Ändra inte ett annat läns rad från `lokalt` utan att länet står bakom ändringen.
+
+## Lokala namn utanför listan
+
+En ort eller en grupp repeatrar kan komma överens om ett eget namn för ett mindre område, till exempel
+`se-vgr-gbg`, och bära det bredvid länets namn. Det hör till dem som använder det och står inte i
+listan här. Se *Lokala namn* i [README.md](README.md#lokala-namn).
 
 ## Ändra ett grannlän
 
-[data/grannlan.csv](data/grannlan.csv) har en rad per kommun och grannlän. Listan är framräknad
-från avstånd på kartan, se *Grannlän* i [README.md](README.md#grannlän). Vet du att din kommun
-har kontakt med ett län som saknas, eller saknar kontakt med ett som står där: ändra filen.
+[data/grannlan.csv](data/grannlan.csv) har en rad per län och grannlän. Listan är framräknad från
+avstånd på kartan, se *Grannlän* i [README.md](README.md#grannlän). Vet ni att ert län har kontakt
+med ett län som saknas, eller saknar kontakt med ett som står där: ändra filen.
 
 1. Lägg till eller ta bort raden i `data/grannlan.csv`. Sätt `via` till `lokal` på rader du lägger till.
-2. Ett par ska gälla åt båda håll. Lägger du till Värmland för en kommun i Dalarna måste minst en
-   kommun i Värmland ha Dalarna.
+2. Ett par ska gälla åt båda håll. Lägger du till Värmland för Dalarna måste Värmland också ha Dalarna.
 3. Kör `python3 scripts/build.py` och skicka en pull request med `data/grannlan.csv` och `REGIONER.md`.
 
 | `via` | Betyder |
 | --- | --- |
-| `land` | Länets landyta ligger inom 40 km, fågelvägen. |
+| `land` | Länens landytor ligger inom 40 km från varandra, fågelvägen. |
 | `vatten` | Längre bort än 40 km, men inom 80 km över öppet vatten. |
 | `omvand` | Tillagd för att paret ska gälla åt båda håll. |
 | `lokal` | Tillagd av någon som känner till trakten. Skriv i pull requesten vad du vet. |
