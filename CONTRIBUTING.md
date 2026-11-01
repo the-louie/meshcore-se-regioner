@@ -36,17 +36,20 @@ att stava varje namn. Är koden du vill använda skriven med stora bokstäver n�
 SCB:s `SE1408`, skriv den med små: `se1408`.
 
 Inom formatet väljer länet fritt: en förkortning (`se-jkp`), SCB-koden (`se06`) eller något annat
-som folk i länet känner igen. Utgångsläget i listan är `se-` och tre bokstäver, men det är bara
-ett förslag.
+som folk i länet känner igen. Utgångsläget i listan är det namn länets repeatrar redan bär, eller
+annars `se-` och tre bokstäver, men det är bara ett förslag.
 
 ## Kolumnen `beslut`
 
 | Värde | Betyder |
 | --- | --- |
 | `forslag` | Utgångsläget. Ingen i länet har bestämt något än. |
+| `uppmatt` | Det namn länets repeatrar redan bär, enligt MeshMapper. Länet har inte bekräftat det. |
 | `lokalt` | Länet har valt namnet själv. |
 
-Ändra inte ett annat läns rad från `lokalt` utan att länet står bakom ändringen.
+Ändra inte ett annat läns rad från `lokalt` utan att länet står bakom ändringen. `scripts/seed.py`
+ändrar bara rader som är `forslag` eller `uppmatt`, se *Utgångsläget kommer från luften* i
+[README.md](README.md#utgångsläget-kommer-från-luften).
 
 ## Lokala namn utanför listan
 

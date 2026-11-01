@@ -66,18 +66,47 @@ Namnet bestäms där det används. Länets namn angår länet och behöver inget
   resten av landet, och ett län som inte vill byta behöver inte.
 - **Länet väljer sin trafikpolicy.** Om meddelanden utan scope ska blockeras, och var kanterna går,
   avgör länet utifrån sina egna radiovägar.
-- **Utgångsläget är en gissning.** Namnen i listan är `se-` och tre bokstäver, valda för att ge
-  varje län något att börja med utan att någon behöver fråga. Säger länet något annat är det länet
-  som stämmer, och listan som ändras.
+- **Utgångsläget är det länet redan gör.** Bär länets repeatrar redan ett namn, är det namnet
+  utgångsläget, se [nedan](#utgångsläget-kommer-från-luften). Annars är det `se-` och tre
+  bokstäver, en gissning för att ge varje län något att börja med. Säger länet något annat är det
+  länet som stämmer, och listan som ändras.
 - **Gemensamt är bara det som är gemensamt.** `se` delas av alla, så där behövs enighet.
   Grannlän som delar kantrepeatrar kommer överens sinsemellan.
 
 [REGIONER.md](REGIONER.md) visar vilka län som har bestämt sitt namn själva och vilka som
 fortfarande har utgångsläget.
 
+### Utgångsläget kommer från luften
+
+[MeshMapper](https://meshmapper.net) registrerar vilka regioner repeatrarna bär. Det visar vad länets
+repeatrar redan bär i praktiken, även där ingen har skrivit ner det, och är därför ett bättre
+utgångsläge än en gissning. `scripts/seed.py` räknar fram det ur en export:
+
+- Varje repeater placeras i ett län efter sin position ([data/lan.geojson](data/lan.geojson)).
+- Ett namn räknas som länets när fler än hälften av repeatrarna som bär det står i länet. Namn som
+  inte hör till ett län, till exempel `se`, `eu`, `europe` och `offgrid`, räknas inte.
+- Namnen räknas exakt som de är stavade. `SE06` och `se06` är olika scopes för repeatern, och
+  båda syns i *Uppmätt*, men bara ett namn i det gemensamma formatet kan bli utgångsläge.
+- Alla läns namn, med antal repeatrar, hamnar i [data/uppmatt.csv](data/uppmatt.csv) och syns i
+  kolumnen *Uppmätt* i [REGIONER.md](REGIONER.md).
+- Ett län som ännu inte har bestämt sig får det vanligaste av sina namn som utgångsläge, om minst
+  två repeatrar bär det. Raden märks *uppmätt*.
+
+Mätningen ändrar aldrig ett namn som länet har valt själv (*lokalt*). Ett uppmätt namn är fortfarande
+ett förslag: det visar vad repeatrarna bär, inte vad länet har kommit överens om.
+
+Exporten hämtas med en egen API-nyckel från MeshMapper och checkas inte in. Skriptet gör inga
+nätanrop:
+
+```
+python3 scripts/seed.py export.json --apply
+python3 scripts/build.py
+```
+
 ## Så är utgångsläget uppbyggt
 
-Utgångsläget är ett förslag för län som ännu inte har valt. Det är uppbyggt så här:
+Utgångsläget är ett förslag för län som ännu inte har valt. Bär länets repeatrar redan ett namn
+är det förslaget, se [ovan](#utgångsläget-kommer-från-luften). Annars är det uppbyggt så här:
 
 ```
 se - jkp
@@ -621,3 +650,6 @@ Det här är inte avgjort, och synpunkter är välkomna som issues eller pull re
 Texten bygger på [MeshCore Canadas ON/QC-förslag](https://meshcore.ca/proposals/onqc-scopes/)
 ([källa](https://github.com/MeshCore-ca/MeshCore-Canada), MIT-licens) och på
 [meshat.se:s regionguide](https://meshat.se/meshcore/regioner/). Länslistan kommer från SCB.
+Länsgränserna i [data/lan.geojson](data/lan.geojson) kommer från © OpenStreetMaps bidragsgivare,
+under [ODbL](https://opendatacommons.org/licenses/odbl/). Uppmätta regioner kommer från
+[MeshMapper](https://meshmapper.net).
