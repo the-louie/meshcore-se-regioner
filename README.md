@@ -21,7 +21,7 @@ Se [CONTRIBUTING.md](CONTRIBUTING.md) och skicka en pull request.
 | --- | --- | --- |
 | Använder MeshCore-appen med en companion | **Inget än.** Låt inställningarna vara. [Fas 2](#fas-2-companions) består av två inställningar. | När ditt län har klarat fas 1 |
 | Äger en repeater | Inget förrän ditt län har bestämt sig. Sedan [fas 1](#fas-1-repeatrar). | När länet har antagit förslaget |
-| Kör en bot | Sätt den till ditt län, se [Bottar](#bottar). | I fas 2, efter länets pilot |
+| Kör en bot | Välj scope för utskick och DM var för sig, se [Bottar](#bottar). | I fas 2, efter länets pilot |
 | Är aktiv i ditt län | Kontrollera länets namn i [REGIONER.md](REGIONER.md). Ni bestämmer det. | Nu |
 
 Resten av sidan förklarar hur allt hänger ihop. Du behöver inte förstå det för att följa stegen.
@@ -40,7 +40,8 @@ När du skickar ett meddelande avgör scopet hur långt det färdas.
 Om ett län antar förslaget efter pilot och alla faser är klara:
 
 - **Repeatrar** bär sitt län, `se` och `eu`.
-- **Bottar** använder länet, så att de håller sig lokala.
+- **Bottar** begränsar sina kanalutskick till målgruppen, oftast länet. Default scope väljs efter
+  vilka användare deras DM-tjänst ska nå.
 - **Companions** har `se` som standard, för att möjliggöra DM på radiovägar som tillåter `se`.
 - **Public** använder `se`, om nationell Public antas separat efter pilot.
 - **Testkanaler** använder länet, så att tester håller sig inom länet.
@@ -359,12 +360,19 @@ behåller sina föräldrar och flaggor tills migrationen är verifierad. Kontrol
 
 #### Bottar
 
-Det här görs i fas 2, när länets pilot har verifierat att de radiovägar botten använder bär länets
-namn. På companionen som botten använder: sätt **Default Region Scope** till länet, till exempel
-`se-jkp`. Sätt också alla kanaler som botten skriver i till länet.
+Migrera bottar i fas 2, efter länets pilot och test med den faktiska botklienten. Det är botens
+ägare som väljer, efter vilka användare botten ska nå.
 
-Har orten ett [lokalt namn](#lokala-namn) som repeatrarna runt botten bär kan botten använda det i
-stället.
+- **Kanalutskick:** sätt ett uttryckligt scope på kanalerna botten skriver i, oftast länet, till
+  exempel `se-jkp`, eller ett [lokalt namn](#lokala-namn) som repeatrarna runt botten bär.
+- **DM:** välj companionens **Default Region Scope** efter vilka användare botten ska svara, inte
+  bara efter var botten står.
+
+En bot med länet som default kan ta emot en fråga med `se` men få sin ACK eller vägretur blockerad
+på vägen tillbaka. En bot som ska svara över länsgränser behöver därför ett default som fungerar åt
+båda håll, till exempel `se`, medan kanalutskicken begränsas separat. Default påverkar också botens
+egna flood-adverts. Kontrollera att klientens tillfälliga scopeval inte stör DM-returer, även när
+en fråga kommer under ett lokalt utskick.
 
 ### Fas 2: Companions
 
@@ -401,7 +409,7 @@ lägg till `se` och välj det.
 | --- | --- | --- |
 | Public | `se`, om nationell Public antas efter pilot | Sprids på sammanhängande radiovägar som tillåter `se`, inom hoppgränsen |
 | Testkanaler, som `#test` | Ditt län, till exempel `se-jkp` | Tester håller sig inom länet |
-| Bottkanaler | Ditt län | Bottsvar håller sig inom länet |
+| Bottkanaler | Minsta scope som når botens målgrupp, oftast länet | Begränsar kanalutskick; botens DM-policy väljs separat |
 | Egna kanaler | Län, ett lokalt namn eller `se` | Välj hur långt den ska nå |
 
 Meddelanden med scope är lite kortare. MeshCore Canada såg i sina tester att gränsen på Public sjönk
