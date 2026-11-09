@@ -21,7 +21,7 @@ En kantrepeater kan bära ett av dem. Se *Grannlän* i [README.md](README.md#gra
 | Uppsala län | `se-upp` | förslag |  | `se03` | `se-sth`, `se-sor`, `se-vml`, `se20`, `se-gav` |
 | Södermanlands län | `se-sor` | förslag | `se04` 8 av 13 | `se04` | `se-sth`, `se-upp`, `se05`, `se08`, `se18`, `se-vml` |
 | Östergötlands län | `se05` | uppmätt | `se05` 123 av 126 | `se05` | `se-sth`, `se-sor`, `se-jkp`, `se08`, `se-vgr`, `se18`, `se-vml` |
-| Jönköpings län | `se-jkp` | uppmätt | `se-jkp` 3026 av 3076, `se06` 7 av 3076 | `se06` | `se05`, `se-kro`, `se08`, `se13`, `se-vgr`, `se18` |
+| Jönköpings län | `se-jkp` | lokalt | `se-jkp` 3026 av 3076, `se06` 7 av 3076 | `se06` | `se05`, `se-kro`, `se08`, `se13`, `se-vgr`, `se18` |
 | Kronobergs län | `se-kro` | förslag | `se07` 5 av 58 | `se07` | `se-jkp`, `se08`, `se-blk`, `se-ska`, `se13`, `se-vgr` |
 | Kalmar län | `se08` | uppmätt | `se08` 5233 av 5333 | `se08` | `se-sor`, `se05`, `se-jkp`, `se-kro`, `se-gtl`, `se-blk` |
 | Gotlands län | `se-gtl` | förslag |  | `se09` | `se-sth`, `se08` |
