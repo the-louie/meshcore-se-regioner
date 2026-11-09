@@ -66,18 +66,52 @@ Namnet bestäms där det används. Länets namn angår länet och behöver inget
   resten av landet, och ett län som inte vill byta behöver inte.
 - **Länet väljer sin trafikpolicy.** Om meddelanden utan scope ska blockeras, och var kanterna går,
   avgör länet utifrån sina egna radiovägar.
-- **Utgångsläget är en gissning.** Namnen i listan är `se-` och tre bokstäver, valda för att ge
-  varje län något att börja med utan att någon behöver fråga. Säger länet något annat är det länet
-  som stämmer, och listan som ändras.
+- **Utgångsläget är det länet redan gör.** Använder länet redan ett namn i trafiken, är det namnet
+  utgångsläget, se [nedan](#utgångsläget-kommer-från-luften). Annars är det `se-` och tre
+  bokstäver, en gissning för att ge varje län något att börja med. Säger länet något annat är det
+  länet som stämmer, och listan som ändras.
 - **Gemensamt är bara det som är gemensamt.** `se` delas av alla, så där behövs enighet.
   Grannlän som delar kantrepeatrar kommer överens sinsemellan.
 
 [REGIONER.md](REGIONER.md) visar vilka län som har bestämt sitt namn själva och vilka som
 fortfarande har utgångsläget.
 
+### Utgångsläget kommer från luften
+
+[Beacon](https://beacon.meshat.se) samlar paketen som observers i varje län hör, och vet vilket scope
+de flesta har. Det visar vilket namn länet redan använder i praktiken, även där ingen har skrivit ner
+det, och är därför ett bättre utgångsläge än en gissning. `scripts/seed.py` räknar fram det:
+
+- Varje län mäts i sitt eget Beacon-område ([data/beacon-omraden.csv](data/beacon-omraden.csv)).
+  Det som räknas är kanalmeddelanden som hördes i länet, per scope.
+- Ett namn räknas som länets när det är länets SCB-kod, namnet i länets rad, eller ett annat namn som
+  har mer än hälften av sina meddelanden i länet. Namn som inte hör till ett län, till exempel `se`,
+  `eu`, `europe` och `offgrid`, grannlänens koder och danska eller norska scopes räknas inte.
+- Namnen räknas exakt som de är stavade. `SE06` och `se06` är olika scopes för repeatern, och
+  båda syns i *Uppmätt*, men bara ett namn i det gemensamma formatet kan bli utgångsläge.
+- Länens namn med minst 5 meddelanden, och antalet, hamnar i [data/uppmatt.csv](data/uppmatt.csv) och
+  syns i kolumnen *Uppmätt* i [REGIONER.md](REGIONER.md). Namn som används färre gånger listas inte.
+- Ett län som ännu inte har bestämt sig får sitt mest använda namn som utgångsläge, om det har
+  **minst 50 kanalmeddelanden** och är **minst hälften av alla meddelanden med scope** som hördes i
+  länet. Raden märks *uppmätt*. Ett län där observers mest hör grannlän eller andra länder lämnas
+  orört.
+
+Mätningen ändrar aldrig ett namn som länet har valt själv (*lokalt*). Ett uppmätt namn är fortfarande
+ett förslag: det visar vad som används, inte vad länet har kommit överens om. Ett meddelande är inte en
+person, och Beacon känner bara igen scopes vars namn det redan vet. Mätningen görs om då och då.
+
+Beacon sparar paket i ungefär två veckor. Hämtningen tar ungefär en kvart och checkas inte in:
+
+```
+python3 scripts/hamta_beacon.py 2026-10-27T00:00:00Z 2026-11-09T00:00:00Z beacon.jsonl
+python3 scripts/seed.py beacon.jsonl --apply
+python3 scripts/build.py
+```
+
 ## Så är utgångsläget uppbyggt
 
-Utgångsläget är ett förslag för län som ännu inte har valt. Det är uppbyggt så här:
+Utgångsläget är ett förslag för län som ännu inte har valt. Använder länet redan ett namn
+är det förslaget, se [ovan](#utgångsläget-kommer-från-luften). Annars är det uppbyggt så här:
 
 ```
 se - jkp
@@ -621,3 +655,4 @@ Det här är inte avgjort, och synpunkter är välkomna som issues eller pull re
 Texten bygger på [MeshCore Canadas ON/QC-förslag](https://meshcore.ca/proposals/onqc-scopes/)
 ([källa](https://github.com/MeshCore-ca/MeshCore-Canada), MIT-licens) och på
 [meshat.se:s regionguide](https://meshat.se/meshcore/regioner/). Länslistan kommer från SCB.
+Uppmätta regioner kommer från [Beacon](https://beacon.meshat.se).
