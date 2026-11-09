@@ -1,627 +1,101 @@
-scb_kommun,kommun,scb_grannlan,grannlan,via
-0114,Upplands Väsby,03,Uppsala län,land
-0114,Upplands Väsby,04,Södermanlands län,land
-0114,Upplands Väsby,19,Västmanlands län,vatten
-0115,Vallentuna,03,Uppsala län,land
-0117,Österåker,03,Uppsala län,land
-0117,Österåker,04,Södermanlands län,vatten
-0120,Värmdö,03,Uppsala län,land
-0120,Värmdö,04,Södermanlands län,vatten
-0123,Järfälla,03,Uppsala län,land
-0123,Järfälla,04,Södermanlands län,land
-0123,Järfälla,19,Västmanlands län,vatten
-0125,Ekerö,03,Uppsala län,land
-0125,Ekerö,04,Södermanlands län,land
-0125,Ekerö,19,Västmanlands län,vatten
-0126,Huddinge,03,Uppsala län,land
-0126,Huddinge,04,Södermanlands län,land
-0126,Huddinge,19,Västmanlands län,vatten
-0127,Botkyrka,03,Uppsala län,land
-0127,Botkyrka,04,Södermanlands län,land
-0127,Botkyrka,05,Östergötlands län,vatten
-0127,Botkyrka,19,Västmanlands län,vatten
-0128,Salem,03,Uppsala län,land
-0128,Salem,04,Södermanlands län,land
-0128,Salem,19,Västmanlands län,vatten
-0136,Haninge,03,Uppsala län,vatten
-0136,Haninge,04,Södermanlands län,land
-0136,Haninge,05,Östergötlands län,vatten
-0136,Haninge,09,Gotlands län,vatten
-0138,Tyresö,03,Uppsala län,vatten
-0138,Tyresö,04,Södermanlands län,vatten
-0139,Upplands-Bro,03,Uppsala län,land
-0139,Upplands-Bro,04,Södermanlands län,land
-0139,Upplands-Bro,19,Västmanlands län,land
-0140,Nykvarn,03,Uppsala län,land
-0140,Nykvarn,04,Södermanlands län,land
-0140,Nykvarn,19,Västmanlands län,vatten
-0160,Täby,03,Uppsala län,land
-0160,Täby,04,Södermanlands län,vatten
-0162,Danderyd,03,Uppsala län,land
-0162,Danderyd,04,Södermanlands län,land
-0163,Sollentuna,03,Uppsala län,land
-0163,Sollentuna,04,Södermanlands län,land
-0180,Stockholm,03,Uppsala län,land
-0180,Stockholm,04,Södermanlands län,land
-0180,Stockholm,19,Västmanlands län,vatten
-0181,Södertälje,03,Uppsala län,land
-0181,Södertälje,04,Södermanlands län,land
-0181,Södertälje,05,Östergötlands län,vatten
-0181,Södertälje,19,Västmanlands län,land
-0182,Nacka,03,Uppsala län,land
-0182,Nacka,04,Södermanlands län,vatten
-0183,Sundbyberg,03,Uppsala län,land
-0183,Sundbyberg,04,Södermanlands län,land
-0184,Solna,03,Uppsala län,land
-0184,Solna,04,Södermanlands län,land
-0184,Solna,19,Västmanlands län,vatten
-0186,Lidingö,03,Uppsala län,land
-0186,Lidingö,04,Södermanlands län,vatten
-0187,Vaxholm,03,Uppsala län,land
-0187,Vaxholm,04,Södermanlands län,vatten
-0188,Norrtälje,03,Uppsala län,land
-0188,Norrtälje,04,Södermanlands län,vatten
-0188,Norrtälje,21,Gävleborgs län,vatten
-0191,Sigtuna,03,Uppsala län,land
-0191,Sigtuna,04,Södermanlands län,land
-0191,Sigtuna,19,Västmanlands län,vatten
-0192,Nynäshamn,03,Uppsala län,vatten
-0192,Nynäshamn,04,Södermanlands län,land
-0192,Nynäshamn,05,Östergötlands län,vatten
-0305,Håbo,01,Stockholms län,land
-0305,Håbo,04,Södermanlands län,land
-0305,Håbo,19,Västmanlands län,land
-0319,Älvkarleby,01,Stockholms län,vatten
-0319,Älvkarleby,19,Västmanlands län,vatten
-0319,Älvkarleby,20,Dalarnas län,vatten
-0319,Älvkarleby,21,Gävleborgs län,land
-0330,Knivsta,01,Stockholms län,land
-0330,Knivsta,04,Södermanlands län,vatten
-0330,Knivsta,19,Västmanlands län,vatten
-0331,Heby,01,Stockholms län,land
-0331,Heby,04,Södermanlands län,land
-0331,Heby,19,Västmanlands län,land
-0331,Heby,20,Dalarnas län,land
-0331,Heby,21,Gävleborgs län,land
-0360,Tierp,01,Stockholms län,land
-0360,Tierp,19,Västmanlands län,land
-0360,Tierp,20,Dalarnas län,land
-0360,Tierp,21,Gävleborgs län,land
-0380,Uppsala,01,Stockholms län,land
-0380,Uppsala,04,Södermanlands län,vatten
-0380,Uppsala,19,Västmanlands län,land
-0380,Uppsala,20,Dalarnas län,land
-0380,Uppsala,21,Gävleborgs län,land
-0381,Enköping,01,Stockholms län,land
-0381,Enköping,04,Södermanlands län,land
-0381,Enköping,19,Västmanlands län,land
-0381,Enköping,20,Dalarnas län,land
-0381,Enköping,21,Gävleborgs län,land
-0382,Östhammar,01,Stockholms län,land
-0382,Östhammar,21,Gävleborgs län,land
-0428,Vingåker,05,Östergötlands län,land
-0428,Vingåker,18,Örebro län,land
-0428,Vingåker,19,Västmanlands län,land
-0461,Gnesta,01,Stockholms län,land
-0461,Gnesta,03,Uppsala län,land
-0461,Gnesta,19,Västmanlands län,land
-0480,Nyköping,01,Stockholms län,land
-0480,Nyköping,03,Uppsala län,vatten
-0480,Nyköping,05,Östergötlands län,land
-0480,Nyköping,08,Kalmar län,vatten
-0480,Nyköping,18,Örebro län,land
-0481,Oxelösund,01,Stockholms län,land
-0481,Oxelösund,05,Östergötlands län,land
-0481,Oxelösund,08,Kalmar län,vatten
-0482,Flen,01,Stockholms län,land
-0482,Flen,03,Uppsala län,land
-0482,Flen,05,Östergötlands län,land
-0482,Flen,18,Örebro län,land
-0482,Flen,19,Västmanlands län,land
-0483,Katrineholm,05,Östergötlands län,land
-0483,Katrineholm,18,Örebro län,land
-0483,Katrineholm,19,Västmanlands län,land
-0484,Eskilstuna,01,Stockholms län,land
-0484,Eskilstuna,03,Uppsala län,land
-0484,Eskilstuna,05,Östergötlands län,land
-0484,Eskilstuna,18,Örebro län,land
-0484,Eskilstuna,19,Västmanlands län,land
-0486,Strängnäs,01,Stockholms län,land
-0486,Strängnäs,03,Uppsala län,land
-0486,Strängnäs,19,Västmanlands län,land
-0488,Trosa,01,Stockholms län,land
-0488,Trosa,03,Uppsala län,vatten
-0488,Trosa,05,Östergötlands län,vatten
-0509,Ödeshög,06,Jönköpings län,land
-0509,Ödeshög,14,Västra Götalands län,land
-0509,Ödeshög,18,Örebro län,land
-0512,Ydre,06,Jönköpings län,land
-0512,Ydre,08,Kalmar län,land
-0513,Kinda,06,Jönköpings län,land
-0513,Kinda,08,Kalmar län,land
-0560,Boxholm,06,Jönköpings län,land
-0560,Boxholm,08,Kalmar län,land
-0560,Boxholm,14,Västra Götalands län,land
-0561,Åtvidaberg,08,Kalmar län,land
-0562,Finspång,04,Södermanlands län,land
-0562,Finspång,18,Örebro län,land
-0562,Finspång,19,Västmanlands län,land
-0563,Valdemarsvik,01,Stockholms län,vatten
-0563,Valdemarsvik,04,Södermanlands län,land
-0563,Valdemarsvik,08,Kalmar län,land
-0580,Linköping,04,Södermanlands län,land
-0580,Linköping,06,Jönköpings län,land
-0580,Linköping,08,Kalmar län,land
-0580,Linköping,18,Örebro län,land
-0581,Norrköping,01,Stockholms län,vatten
-0581,Norrköping,04,Södermanlands län,land
-0581,Norrköping,08,Kalmar län,land
-0581,Norrköping,18,Örebro län,land
-0582,Söderköping,01,Stockholms län,vatten
-0582,Söderköping,04,Södermanlands län,land
-0582,Söderköping,08,Kalmar län,land
-0583,Motala,04,Södermanlands län,land
-0583,Motala,06,Jönköpings län,land
-0583,Motala,14,Västra Götalands län,land
-0583,Motala,18,Örebro län,land
-0584,Vadstena,06,Jönköpings län,land
-0584,Vadstena,14,Västra Götalands län,land
-0584,Vadstena,18,Örebro län,land
-0586,Mjölby,06,Jönköpings län,land
-0586,Mjölby,08,Kalmar län,land
-0586,Mjölby,14,Västra Götalands län,land
-0586,Mjölby,18,Örebro län,land
-0604,Aneby,05,Östergötlands län,land
-0604,Aneby,08,Kalmar län,land
-0604,Aneby,14,Västra Götalands län,land
-0617,Gnosjö,07,Kronobergs län,land
-0617,Gnosjö,13,Hallands län,land
-0617,Gnosjö,14,Västra Götalands län,land
-0642,Mullsjö,05,Östergötlands län,land
-0642,Mullsjö,14,Västra Götalands län,land
-0643,Habo,05,Östergötlands län,land
-0643,Habo,14,Västra Götalands län,land
-0643,Habo,18,Örebro län,vatten
-0662,Gislaved,07,Kronobergs län,land
-0662,Gislaved,13,Hallands län,land
-0662,Gislaved,14,Västra Götalands län,land
-0665,Vaggeryd,07,Kronobergs län,land
-0665,Vaggeryd,13,Hallands län,land
-0665,Vaggeryd,14,Västra Götalands län,land
-0680,Jönköping,05,Östergötlands län,land
-0680,Jönköping,14,Västra Götalands län,land
-0680,Jönköping,18,Örebro län,vatten
-0682,Nässjö,05,Östergötlands län,land
-0682,Nässjö,07,Kronobergs län,land
-0682,Nässjö,08,Kalmar län,land
-0682,Nässjö,14,Västra Götalands län,land
-0683,Värnamo,07,Kronobergs län,land
-0683,Värnamo,13,Hallands län,land
-0683,Värnamo,14,Västra Götalands län,land
-0684,Sävsjö,05,Östergötlands län,land
-0684,Sävsjö,07,Kronobergs län,land
-0684,Sävsjö,08,Kalmar län,land
-0685,Vetlanda,05,Östergötlands län,land
-0685,Vetlanda,07,Kronobergs län,land
-0685,Vetlanda,08,Kalmar län,land
-0686,Eksjö,05,Östergötlands län,land
-0686,Eksjö,07,Kronobergs län,land
-0686,Eksjö,08,Kalmar län,land
-0687,Tranås,05,Östergötlands län,land
-0687,Tranås,08,Kalmar län,land
-0687,Tranås,14,Västra Götalands län,land
-0760,Uppvidinge,06,Jönköpings län,land
-0760,Uppvidinge,08,Kalmar län,land
-0760,Uppvidinge,10,Blekinge län,land
-0761,Lessebo,06,Jönköpings län,land
-0761,Lessebo,08,Kalmar län,land
-0761,Lessebo,10,Blekinge län,land
-0763,Tingsryd,06,Jönköpings län,land
-0763,Tingsryd,08,Kalmar län,land
-0763,Tingsryd,10,Blekinge län,land
-0763,Tingsryd,12,Skåne län,land
-0764,Alvesta,06,Jönköpings län,land
-0764,Alvesta,10,Blekinge län,land
-0764,Alvesta,12,Skåne län,land
-0765,Älmhult,06,Jönköpings län,land
-0765,Älmhult,10,Blekinge län,land
-0765,Älmhult,12,Skåne län,land
-0765,Älmhult,13,Hallands län,land
-0767,Markaryd,06,Jönköpings län,land
-0767,Markaryd,10,Blekinge län,land
-0767,Markaryd,12,Skåne län,land
-0767,Markaryd,13,Hallands län,land
-0780,Växjö,06,Jönköpings län,land
-0780,Växjö,08,Kalmar län,land
-0780,Växjö,10,Blekinge län,land
-0780,Växjö,12,Skåne län,land
-0781,Ljungby,06,Jönköpings län,land
-0781,Ljungby,10,Blekinge län,land
-0781,Ljungby,12,Skåne län,land
-0781,Ljungby,13,Hallands län,land
-0781,Ljungby,14,Västra Götalands län,land
-0821,Högsby,06,Jönköpings län,land
-0821,Högsby,07,Kronobergs län,land
-0834,Torsås,07,Kronobergs län,land
-0834,Torsås,10,Blekinge län,land
-0840,Mörbylånga,10,Blekinge län,land
-0860,Hultsfred,05,Östergötlands län,land
-0860,Hultsfred,06,Jönköpings län,land
-0860,Hultsfred,07,Kronobergs län,land
-0861,Mönsterås,06,Jönköpings län,land
-0861,Mönsterås,07,Kronobergs län,land
-0861,Mönsterås,10,Blekinge län,vatten
-0862,Emmaboda,07,Kronobergs län,land
-0862,Emmaboda,10,Blekinge län,land
-0880,Kalmar,07,Kronobergs län,land
-0880,Kalmar,10,Blekinge län,land
-0881,Nybro,06,Jönköpings län,land
-0881,Nybro,07,Kronobergs län,land
-0881,Nybro,10,Blekinge län,land
-0882,Oskarshamn,05,Östergötlands län,land
-0882,Oskarshamn,06,Jönköpings län,land
-0882,Oskarshamn,07,Kronobergs län,land
-0882,Oskarshamn,09,Gotlands län,vatten
-0883,Västervik,04,Södermanlands län,vatten
-0883,Västervik,05,Östergötlands län,land
-0883,Västervik,06,Jönköpings län,land
-0884,Vimmerby,05,Östergötlands län,land
-0884,Vimmerby,06,Jönköpings län,land
-0885,Borgholm,05,Östergötlands län,vatten
-0885,Borgholm,09,Gotlands län,vatten
-0885,Borgholm,10,Blekinge län,vatten
-0980,Gotland,01,Stockholms län,vatten
-0980,Gotland,08,Kalmar län,vatten
-1060,Olofström,07,Kronobergs län,land
-1060,Olofström,12,Skåne län,land
-1080,Karlskrona,07,Kronobergs län,land
-1080,Karlskrona,08,Kalmar län,land
-1080,Karlskrona,12,Skåne län,vatten
-1081,Ronneby,07,Kronobergs län,land
-1081,Ronneby,08,Kalmar län,land
-1081,Ronneby,12,Skåne län,land
-1082,Karlshamn,07,Kronobergs län,land
-1082,Karlshamn,08,Kalmar län,land
-1082,Karlshamn,12,Skåne län,land
-1083,Sölvesborg,07,Kronobergs län,land
-1083,Sölvesborg,12,Skåne län,land
-1214,Svalöv,13,Hallands län,land
-1256,Östra Göinge,07,Kronobergs län,land
-1256,Östra Göinge,10,Blekinge län,land
-1256,Östra Göinge,13,Hallands län,land
-1257,Örkelljunga,07,Kronobergs län,land
-1257,Örkelljunga,13,Hallands län,land
-1260,Bjuv,13,Hallands län,land
-1261,Kävlinge,13,Hallands län,vatten
-1267,Höör,07,Kronobergs län,land
-1267,Höör,13,Hallands län,land
-1272,Bromölla,07,Kronobergs län,land
-1272,Bromölla,10,Blekinge län,land
-1273,Osby,07,Kronobergs län,land
-1273,Osby,10,Blekinge län,land
-1273,Osby,13,Hallands län,land
-1275,Perstorp,07,Kronobergs län,land
-1275,Perstorp,13,Hallands län,land
-1276,Klippan,07,Kronobergs län,land
-1276,Klippan,13,Hallands län,land
-1277,Åstorp,07,Kronobergs län,land
-1277,Åstorp,13,Hallands län,land
-1278,Båstad,07,Kronobergs län,land
-1278,Båstad,13,Hallands län,land
-1282,Landskrona,13,Hallands län,vatten
-1283,Helsingborg,13,Hallands län,land
-1284,Höganäs,13,Hallands län,land
-1285,Eslöv,13,Hallands län,land
-1286,Ystad,10,Blekinge län,vatten
-1290,Kristianstad,07,Kronobergs län,land
-1290,Kristianstad,10,Blekinge län,land
-1291,Simrishamn,10,Blekinge län,land
-1292,Ängelholm,07,Kronobergs län,land
-1292,Ängelholm,13,Hallands län,land
-1293,Hässleholm,07,Kronobergs län,land
-1293,Hässleholm,10,Blekinge län,land
-1293,Hässleholm,13,Hallands län,land
-1315,Hylte,06,Jönköpings län,land
-1315,Hylte,07,Kronobergs län,land
-1315,Hylte,14,Västra Götalands län,land
-1380,Halmstad,06,Jönköpings län,land
-1380,Halmstad,07,Kronobergs län,land
-1380,Halmstad,12,Skåne län,land
-1380,Halmstad,14,Västra Götalands län,land
-1381,Laholm,06,Jönköpings län,land
-1381,Laholm,07,Kronobergs län,land
-1381,Laholm,12,Skåne län,land
-1382,Falkenberg,06,Jönköpings län,land
-1382,Falkenberg,07,Kronobergs län,land
-1382,Falkenberg,12,Skåne län,land
-1382,Falkenberg,14,Västra Götalands län,land
-1383,Varberg,06,Jönköpings län,land
-1383,Varberg,12,Skåne län,vatten
-1383,Varberg,14,Västra Götalands län,land
-1384,Kungsbacka,14,Västra Götalands län,land
-1401,Härryda,13,Hallands län,land
-1402,Partille,13,Hallands län,land
-1407,Öckerö,13,Hallands län,land
-1415,Stenungsund,13,Hallands län,vatten
-1419,Tjörn,13,Hallands län,vatten
-1421,Orust,13,Hallands län,vatten
-1435,Tanum,17,Värmlands län,land
-1438,Dals-Ed,17,Värmlands län,land
-1440,Ale,13,Hallands län,land
-1441,Lerum,13,Hallands län,land
-1442,Vårgårda,13,Hallands län,land
-1443,Bollebygd,13,Hallands län,land
-1444,Grästorp,17,Värmlands län,vatten
-1445,Essunga,06,Jönköpings län,land
-1446,Karlsborg,05,Östergötlands län,land
-1446,Karlsborg,06,Jönköpings län,land
-1446,Karlsborg,17,Värmlands län,land
-1446,Karlsborg,18,Örebro län,land
-1447,Gullspång,05,Östergötlands län,land
-1447,Gullspång,17,Värmlands län,land
-1447,Gullspång,18,Örebro län,land
-1452,Tranemo,06,Jönköpings län,land
-1452,Tranemo,13,Hallands län,land
-1460,Bengtsfors,17,Värmlands län,land
-1461,Mellerud,17,Värmlands län,land
-1463,Mark,06,Jönköpings län,land
-1463,Mark,13,Hallands län,land
-1465,Svenljunga,06,Jönköpings län,land
-1465,Svenljunga,07,Kronobergs län,land
-1465,Svenljunga,13,Hallands län,land
-1466,Herrljunga,06,Jönköpings län,land
-1470,Vara,06,Jönköpings län,land
-1471,Götene,17,Värmlands län,land
-1472,Tibro,05,Östergötlands län,land
-1472,Tibro,06,Jönköpings län,land
-1472,Tibro,18,Örebro län,land
-1473,Töreboda,05,Östergötlands län,land
-1473,Töreboda,17,Värmlands län,land
-1473,Töreboda,18,Örebro län,land
-1480,Göteborg,13,Hallands län,land
-1481,Mölndal,13,Hallands län,land
-1482,Kungälv,13,Hallands län,land
-1485,Uddevalla,13,Hallands län,vatten
-1486,Strömstad,17,Värmlands län,land
-1487,Vänersborg,17,Värmlands län,vatten
-1489,Alingsås,13,Hallands län,land
-1490,Borås,06,Jönköpings län,land
-1490,Borås,13,Hallands län,land
-1491,Ulricehamn,06,Jönköpings län,land
-1492,Åmål,17,Värmlands län,land
-1493,Mariestad,17,Värmlands län,land
-1493,Mariestad,18,Örebro län,land
-1494,Lidköping,17,Värmlands län,land
-1495,Skara,06,Jönköpings län,land
-1496,Skövde,05,Östergötlands län,land
-1496,Skövde,06,Jönköpings län,land
-1496,Skövde,18,Örebro län,land
-1497,Hjo,05,Östergötlands län,land
-1497,Hjo,06,Jönköpings län,land
-1497,Hjo,18,Örebro län,land
-1498,Tidaholm,05,Östergötlands län,land
-1498,Tidaholm,06,Jönköpings län,land
-1499,Falköping,06,Jönköpings län,land
-1730,Eda,14,Västra Götalands län,land
-1737,Torsby,20,Dalarnas län,land
-1760,Storfors,14,Västra Götalands län,land
-1760,Storfors,18,Örebro län,land
-1761,Hammarö,14,Västra Götalands län,land
-1762,Munkfors,18,Örebro län,land
-1762,Munkfors,20,Dalarnas län,land
-1764,Grums,14,Västra Götalands län,land
-1765,Årjäng,14,Västra Götalands län,land
-1766,Sunne,20,Dalarnas län,land
-1780,Karlstad,14,Västra Götalands län,land
-1780,Karlstad,18,Örebro län,land
-1781,Kristinehamn,14,Västra Götalands län,land
-1781,Kristinehamn,18,Örebro län,land
-1782,Filipstad,18,Örebro län,land
-1782,Filipstad,20,Dalarnas län,land
-1783,Hagfors,18,Örebro län,land
-1783,Hagfors,20,Dalarnas län,land
-1784,Arvika,14,Västra Götalands län,land
-1785,Säffle,14,Västra Götalands län,land
-1814,Lekeberg,04,Södermanlands län,land
-1814,Lekeberg,05,Östergötlands län,land
-1814,Lekeberg,14,Västra Götalands län,land
-1814,Lekeberg,17,Värmlands län,land
-1814,Lekeberg,19,Västmanlands län,land
-1860,Laxå,05,Östergötlands län,land
-1860,Laxå,14,Västra Götalands län,land
-1860,Laxå,17,Värmlands län,land
-1861,Hallsberg,04,Södermanlands län,land
-1861,Hallsberg,05,Östergötlands län,land
-1861,Hallsberg,14,Västra Götalands län,land
-1861,Hallsberg,17,Värmlands län,land
-1861,Hallsberg,19,Västmanlands län,land
-1862,Degerfors,14,Västra Götalands län,land
-1862,Degerfors,17,Värmlands län,land
-1863,Hällefors,17,Värmlands län,land
-1863,Hällefors,19,Västmanlands län,land
-1863,Hällefors,20,Dalarnas län,land
-1864,Ljusnarsberg,17,Värmlands län,land
-1864,Ljusnarsberg,19,Västmanlands län,land
-1864,Ljusnarsberg,20,Dalarnas län,land
-1880,Örebro,04,Södermanlands län,land
-1880,Örebro,05,Östergötlands län,land
-1880,Örebro,17,Värmlands län,land
-1880,Örebro,19,Västmanlands län,land
-1880,Örebro,20,Dalarnas län,land
-1881,Kumla,04,Södermanlands län,land
-1881,Kumla,05,Östergötlands län,land
-1881,Kumla,14,Västra Götalands län,land
-1881,Kumla,17,Värmlands län,land
-1881,Kumla,19,Västmanlands län,land
-1882,Askersund,04,Södermanlands län,land
-1882,Askersund,05,Östergötlands län,land
-1882,Askersund,06,Jönköpings län,vatten
-1882,Askersund,14,Västra Götalands län,land
-1882,Askersund,17,Värmlands län,land
-1883,Karlskoga,14,Västra Götalands län,land
-1883,Karlskoga,17,Värmlands län,land
-1884,Nora,17,Värmlands län,land
-1884,Nora,19,Västmanlands län,land
-1884,Nora,20,Dalarnas län,land
-1885,Lindesberg,04,Södermanlands län,land
-1885,Lindesberg,17,Värmlands län,land
-1885,Lindesberg,19,Västmanlands län,land
-1885,Lindesberg,20,Dalarnas län,land
-1904,Skinnskatteberg,04,Södermanlands län,land
-1904,Skinnskatteberg,18,Örebro län,land
-1904,Skinnskatteberg,20,Dalarnas län,land
-1907,Surahammar,03,Uppsala län,land
-1907,Surahammar,04,Södermanlands län,land
-1907,Surahammar,18,Örebro län,land
-1907,Surahammar,20,Dalarnas län,land
-1960,Kungsör,01,Stockholms län,vatten
-1960,Kungsör,03,Uppsala län,land
-1960,Kungsör,04,Södermanlands län,land
-1960,Kungsör,05,Östergötlands län,land
-1960,Kungsör,18,Örebro län,land
-1961,Hallstahammar,01,Stockholms län,vatten
-1961,Hallstahammar,03,Uppsala län,land
-1961,Hallstahammar,04,Södermanlands län,land
-1961,Hallstahammar,18,Örebro län,land
-1961,Hallstahammar,20,Dalarnas län,land
-1962,Norberg,03,Uppsala län,land
-1962,Norberg,18,Örebro län,land
-1962,Norberg,20,Dalarnas län,land
-1962,Norberg,21,Gävleborgs län,land
-1980,Västerås,01,Stockholms län,land
-1980,Västerås,03,Uppsala län,land
-1980,Västerås,04,Södermanlands län,land
-1980,Västerås,18,Örebro län,land
-1980,Västerås,20,Dalarnas län,land
-1981,Sala,03,Uppsala län,land
-1981,Sala,04,Södermanlands län,land
-1981,Sala,18,Örebro län,land
-1981,Sala,20,Dalarnas län,land
-1981,Sala,21,Gävleborgs län,land
-1982,Fagersta,03,Uppsala län,land
-1982,Fagersta,18,Örebro län,land
-1982,Fagersta,20,Dalarnas län,land
-1983,Köping,01,Stockholms län,vatten
-1983,Köping,03,Uppsala län,land
-1983,Köping,04,Södermanlands län,land
-1983,Köping,18,Örebro län,land
-1983,Köping,20,Dalarnas län,land
-1984,Arboga,04,Södermanlands län,land
-1984,Arboga,05,Östergötlands län,land
-1984,Arboga,18,Örebro län,land
-1984,Arboga,20,Dalarnas län,land
-2021,Vansbro,17,Värmlands län,land
-2021,Vansbro,18,Örebro län,land
-2023,Malung-Sälen,17,Värmlands län,land
-2023,Malung-Sälen,18,Örebro län,land
-2023,Malung-Sälen,23,Jämtlands län,land
-2026,Gagnef,17,Värmlands län,land
-2026,Gagnef,18,Örebro län,land
-2029,Leksand,21,Gävleborgs län,land
-2031,Rättvik,21,Gävleborgs län,land
-2031,Rättvik,23,Jämtlands län,land
-2034,Orsa,21,Gävleborgs län,land
-2034,Orsa,23,Jämtlands län,land
-2039,Älvdalen,17,Värmlands län,land
-2039,Älvdalen,21,Gävleborgs län,land
-2039,Älvdalen,23,Jämtlands län,land
-2061,Smedjebacken,17,Värmlands län,land
-2061,Smedjebacken,18,Örebro län,land
-2061,Smedjebacken,19,Västmanlands län,land
-2061,Smedjebacken,21,Gävleborgs län,land
-2062,Mora,17,Värmlands län,land
-2062,Mora,21,Gävleborgs län,land
-2062,Mora,23,Jämtlands län,land
-2080,Falun,19,Västmanlands län,land
-2080,Falun,21,Gävleborgs län,land
-2081,Borlänge,18,Örebro län,land
-2081,Borlänge,19,Västmanlands län,land
-2081,Borlänge,21,Gävleborgs län,land
-2082,Säter,18,Örebro län,land
-2082,Säter,19,Västmanlands län,land
-2082,Säter,21,Gävleborgs län,land
-2083,Hedemora,03,Uppsala län,land
-2083,Hedemora,18,Örebro län,land
-2083,Hedemora,19,Västmanlands län,land
-2083,Hedemora,21,Gävleborgs län,land
-2084,Avesta,03,Uppsala län,land
-2084,Avesta,19,Västmanlands län,land
-2084,Avesta,21,Gävleborgs län,land
-2085,Ludvika,17,Värmlands län,land
-2085,Ludvika,18,Örebro län,land
-2085,Ludvika,19,Västmanlands län,land
-2101,Ockelbo,03,Uppsala län,land
-2101,Ockelbo,20,Dalarnas län,land
-2104,Hofors,03,Uppsala län,land
-2104,Hofors,19,Västmanlands län,land
-2104,Hofors,20,Dalarnas län,land
-2121,Ovanåker,20,Dalarnas län,land
-2121,Ovanåker,23,Jämtlands län,land
-2132,Nordanstig,22,Västernorrlands län,land
-2132,Nordanstig,23,Jämtlands län,land
-2161,Ljusdal,20,Dalarnas län,land
-2161,Ljusdal,22,Västernorrlands län,land
-2161,Ljusdal,23,Jämtlands län,land
-2180,Gävle,01,Stockholms län,omvand
-2180,Gävle,03,Uppsala län,land
-2180,Gävle,19,Västmanlands län,land
-2180,Gävle,20,Dalarnas län,land
-2181,Sandviken,03,Uppsala län,land
-2181,Sandviken,19,Västmanlands län,land
-2181,Sandviken,20,Dalarnas län,land
-2182,Söderhamn,03,Uppsala län,vatten
-2182,Söderhamn,20,Dalarnas län,land
-2183,Bollnäs,20,Dalarnas län,land
-2184,Hudiksvall,22,Västernorrlands län,land
-2184,Hudiksvall,23,Jämtlands län,land
-2260,Ånge,21,Gävleborgs län,land
-2260,Ånge,23,Jämtlands län,land
-2262,Timrå,21,Gävleborgs län,land
-2262,Timrå,23,Jämtlands län,land
-2280,Härnösand,21,Gävleborgs län,vatten
-2280,Härnösand,23,Jämtlands län,land
-2281,Sundsvall,21,Gävleborgs län,land
-2281,Sundsvall,23,Jämtlands län,land
-2282,Kramfors,21,Gävleborgs län,vatten
-2282,Kramfors,23,Jämtlands län,land
-2282,Kramfors,24,Västerbottens län,vatten
-2283,Sollefteå,23,Jämtlands län,land
-2283,Sollefteå,24,Västerbottens län,land
-2284,Örnsköldsvik,23,Jämtlands län,land
-2284,Örnsköldsvik,24,Västerbottens län,land
-2303,Ragunda,22,Västernorrlands län,land
-2305,Bräcke,21,Gävleborgs län,land
-2305,Bräcke,22,Västernorrlands län,land
-2313,Strömsund,22,Västernorrlands län,land
-2313,Strömsund,24,Västerbottens län,land
-2326,Berg,21,Gävleborgs län,land
-2326,Berg,22,Västernorrlands län,land
-2361,Härjedalen,20,Dalarnas län,land
-2361,Härjedalen,21,Gävleborgs län,land
-2361,Härjedalen,22,Västernorrlands län,land
-2380,Östersund,22,Västernorrlands län,land
-2401,Nordmaling,22,Västernorrlands län,land
-2403,Bjurholm,22,Västernorrlands län,land
-2404,Vindeln,22,Västernorrlands län,land
-2417,Norsjö,25,Norrbottens län,land
-2418,Malå,25,Norrbottens län,land
-2421,Storuman,23,Jämtlands län,land
-2421,Storuman,25,Norrbottens län,land
-2422,Sorsele,25,Norrbottens län,land
-2425,Dorotea,22,Västernorrlands län,land
-2425,Dorotea,23,Jämtlands län,land
-2460,Vännäs,22,Västernorrlands län,land
-2462,Vilhelmina,22,Västernorrlands län,land
-2462,Vilhelmina,23,Jämtlands län,land
-2463,Åsele,22,Västernorrlands län,land
-2463,Åsele,23,Jämtlands län,land
-2480,Umeå,22,Västernorrlands län,land
-2481,Lycksele,22,Västernorrlands län,land
-2481,Lycksele,25,Norrbottens län,land
-2482,Skellefteå,25,Norrbottens län,land
-2505,Arvidsjaur,24,Västerbottens län,land
-2506,Arjeplog,24,Västerbottens län,land
-2560,Älvsbyn,24,Västerbottens län,land
-2580,Luleå,24,Västerbottens län,land
-2581,Piteå,24,Västerbottens län,land
-2582,Boden,24,Västerbottens län,vatten
+scb_lan,lan,scb_grannlan,grannlan,via
+01,Stockholms län,03,Uppsala län,land
+01,Stockholms län,04,Södermanlands län,land
+01,Stockholms län,05,Östergötlands län,vatten
+01,Stockholms län,09,Gotlands län,vatten
+01,Stockholms län,19,Västmanlands län,land
+01,Stockholms län,21,Gävleborgs län,vatten
+03,Uppsala län,01,Stockholms län,land
+03,Uppsala län,04,Södermanlands län,land
+03,Uppsala län,19,Västmanlands län,land
+03,Uppsala län,20,Dalarnas län,land
+03,Uppsala län,21,Gävleborgs län,land
+04,Södermanlands län,01,Stockholms län,land
+04,Södermanlands län,03,Uppsala län,land
+04,Södermanlands län,05,Östergötlands län,land
+04,Södermanlands län,08,Kalmar län,vatten
+04,Södermanlands län,18,Örebro län,land
+04,Södermanlands län,19,Västmanlands län,land
+05,Östergötlands län,01,Stockholms län,vatten
+05,Östergötlands län,04,Södermanlands län,land
+05,Östergötlands län,06,Jönköpings län,land
+05,Östergötlands län,08,Kalmar län,land
+05,Östergötlands län,14,Västra Götalands län,land
+05,Östergötlands län,18,Örebro län,land
+05,Östergötlands län,19,Västmanlands län,land
+06,Jönköpings län,05,Östergötlands län,land
+06,Jönköpings län,07,Kronobergs län,land
+06,Jönköpings län,08,Kalmar län,land
+06,Jönköpings län,13,Hallands län,land
+06,Jönköpings län,14,Västra Götalands län,land
+06,Jönköpings län,18,Örebro län,vatten
+07,Kronobergs län,06,Jönköpings län,land
+07,Kronobergs län,08,Kalmar län,land
+07,Kronobergs län,10,Blekinge län,land
+07,Kronobergs län,12,Skåne län,land
+07,Kronobergs län,13,Hallands län,land
+07,Kronobergs län,14,Västra Götalands län,land
+08,Kalmar län,04,Södermanlands län,vatten
+08,Kalmar län,05,Östergötlands län,land
+08,Kalmar län,06,Jönköpings län,land
+08,Kalmar län,07,Kronobergs län,land
+08,Kalmar län,09,Gotlands län,vatten
+08,Kalmar län,10,Blekinge län,land
+09,Gotlands län,01,Stockholms län,vatten
+09,Gotlands län,08,Kalmar län,vatten
+10,Blekinge län,07,Kronobergs län,land
+10,Blekinge län,08,Kalmar län,land
+10,Blekinge län,12,Skåne län,land
+12,Skåne län,07,Kronobergs län,land
+12,Skåne län,10,Blekinge län,land
+12,Skåne län,13,Hallands län,land
+13,Hallands län,06,Jönköpings län,land
+13,Hallands län,07,Kronobergs län,land
+13,Hallands län,12,Skåne län,land
+13,Hallands län,14,Västra Götalands län,land
+14,Västra Götalands län,05,Östergötlands län,land
+14,Västra Götalands län,06,Jönköpings län,land
+14,Västra Götalands län,07,Kronobergs län,land
+14,Västra Götalands län,13,Hallands län,land
+14,Västra Götalands län,17,Värmlands län,land
+14,Västra Götalands län,18,Örebro län,land
+17,Värmlands län,14,Västra Götalands län,land
+17,Värmlands län,18,Örebro län,land
+17,Värmlands län,20,Dalarnas län,land
+18,Örebro län,04,Södermanlands län,land
+18,Örebro län,05,Östergötlands län,land
+18,Örebro län,06,Jönköpings län,vatten
+18,Örebro län,14,Västra Götalands län,land
+18,Örebro län,17,Värmlands län,land
+18,Örebro län,19,Västmanlands län,land
+18,Örebro län,20,Dalarnas län,land
+19,Västmanlands län,01,Stockholms län,land
+19,Västmanlands län,03,Uppsala län,land
+19,Västmanlands län,04,Södermanlands län,land
+19,Västmanlands län,05,Östergötlands län,land
+19,Västmanlands län,18,Örebro län,land
+19,Västmanlands län,20,Dalarnas län,land
+19,Västmanlands län,21,Gävleborgs län,land
+20,Dalarnas län,03,Uppsala län,land
+20,Dalarnas län,17,Värmlands län,land
+20,Dalarnas län,18,Örebro län,land
+20,Dalarnas län,19,Västmanlands län,land
+20,Dalarnas län,21,Gävleborgs län,land
+20,Dalarnas län,23,Jämtlands län,land
+21,Gävleborgs län,01,Stockholms län,omvand
+21,Gävleborgs län,03,Uppsala län,land
+21,Gävleborgs län,19,Västmanlands län,land
+21,Gävleborgs län,20,Dalarnas län,land
+21,Gävleborgs län,22,Västernorrlands län,land
+21,Gävleborgs län,23,Jämtlands län,land
+22,Västernorrlands län,21,Gävleborgs län,land
+22,Västernorrlands län,23,Jämtlands län,land
+22,Västernorrlands län,24,Västerbottens län,land
+23,Jämtlands län,20,Dalarnas län,land
+23,Jämtlands län,21,Gävleborgs län,land
+23,Jämtlands län,22,Västernorrlands län,land
+23,Jämtlands län,24,Västerbottens län,land
+24,Västerbottens län,22,Västernorrlands län,land
+24,Västerbottens län,23,Jämtlands län,land
+24,Västerbottens län,25,Norrbottens län,land
+25,Norrbottens län,24,Västerbottens län,land

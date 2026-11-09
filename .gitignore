@@ -1,2 +1,4 @@
 __pycache__/
 .DS_Store
+# MeshMapper-exporter innehåller data som inte ska checkas in
+export*.json
