@@ -25,7 +25,7 @@ def paket(omrade, scope, antal, typ="group_text", start=0):
 
 TRAFIK = (
     paket("JKG", "se-jkp", 90) + paket("JKG", "se06", 5) + paket("JKG", "se", 5)
-    + paket("MMX", "se12", 60) + paket("MMX", "dk", 70)        # Skåne: 46 %, mest Danmark
+    + paket("MMX", "se12", 60) + paket("MMX", "dk", 70)        # Skåne: mest Danmark
     + paket("RNB", "se10", 55) + paket("RNB", "se12", 10)      # Blekinge hör Skåne också
     + paket("GOT", "se", 200) + paket("GOT", "se14", 3)
     + paket("SDL", "SDL", 80)                                  # versaler
@@ -62,9 +62,18 @@ class Seed(unittest.TestCase):
         regions = {x["scb_lan"]: (x["region"], x["beslut"]) for x in r}
         self.assertEqual(regions["06"], ("se-jkp", "uppmatt"))
         self.assertEqual(regions["10"], ("se10", "uppmatt"))   # 55 of 65, 85 %
-        self.assertEqual(regions["12"], ("se-ska", "forslag"))  # 60 of 130, 46 %
+        self.assertEqual(regions["12"], ("se12", "uppmatt"))   # 60 of 60 once dk is left out
         self.assertEqual(regions["14"], ("se-vgr", "forslag"))  # 3 messages
-        self.assertNotIn("Län 12", andrat)
+        self.assertIn("Län 12", andrat)
+
+    def test_the_share_leaves_out_international_traffic_but_not_swedish_neighbours(self):
+        utland = TRAFIK + paket("MMX", "eu", 30) + paket("MMX", "oresund", 30) + paket("MMX", "no", 30)
+        egna, _, _ = self.measured(utland)
+        self.assertEqual(egna["12"][1], 60)                    # only se12 is Swedish here
+        granne = TRAFIK + paket("MMX", "se10", 70)             # a Swedish neighbour still counts
+        egna, r, _ = self.measured(granne)
+        seed.apply(r, egna, 50, 50)
+        self.assertEqual(next(x for x in r if x["scb_lan"] == "12")["region"], "se-ska")  # 60 of 130
 
     def test_uppercase_names_are_measured_but_never_registered(self):
         egna, r, _ = self.measured()
