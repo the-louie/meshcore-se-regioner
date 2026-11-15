@@ -15,8 +15,10 @@ sina meddelanden i länets område.
 Med --apply får ett län som inte har bestämt sig (beslut = forslag eller uppmatt) sitt namn och
 märks `uppmatt`, men bara om
   - namnet har minst --min-meddelanden (standard 50) kanalmeddelanden,
-  - namnet är minst --min-andel procent (standard 50) av alla kanalmeddelanden med scope som
-    hördes i området, så att ett län vars observers mest hör grannar lämnas orört,
+  - namnet är minst --min-andel procent (standard 50) av de kanalmeddelanden med scope som
+    hördes i området, utlandstrafik borträknad (danska, norska, finska scopes och eu, europe,
+    nordic, oresund), så att ett län vars observers mest hör svenska grannar lämnas orört men
+    ett gränslän som hör mycket dansk trafik inte gör det,
   - namnet följer det gemensamma formatet (små a-z, 0-9, enkla bindestreck, högst 29 tecken).
 Ett län som har bestämt själv (beslut = lokalt) ändras aldrig.
 """
@@ -37,6 +39,7 @@ NAMN = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 NAMN_MAX = 29
 DELADE = {"se", "eu", "europe", "offgrid", "nordic", "oresund"}
 UTLANDSKA = re.compile(r"^(dk|no|fi)(\d|-|$)", re.I)
+INTERNATIONELLA = {"eu", "europe", "nordic", "oresund"}
 SCB_KOD = re.compile(r"^se\d{2}(\d{2})?$", re.I)
 
 
@@ -76,7 +79,8 @@ def hor_till(namn, scb_lan, rad, omrade, per_omrade, totalt):
 
 
 def lansnamn(rows, omraden, per_omrade):
-    """{scb_lan: ([(namn, meddelanden), ...] i fallande ordning, meddelanden med scope i området)}."""
+    """{scb_lan: ([(namn, meddelanden), ...] i fallande ordning, meddelanden med scope i området
+    utom utlandstrafik)}."""
     totalt = Counter()
     for c in per_omrade.values():
         totalt.update(c)
@@ -88,7 +92,9 @@ def lansnamn(rows, omraden, per_omrade):
         c = per_omrade.get(omrade, Counter())
         egna = [(n, k) for n, k in c.items()
                 if hor_till(n, rad["scb_lan"], rad, omrade, per_omrade, totalt)]
-        out[rad["scb_lan"]] = (sorted(egna, key=lambda t: (-t[1], t[0])), sum(c.values()))
+        svenska = sum(k for n, k in c.items()
+                      if not UTLANDSKA.match(n) and n.lower() not in INTERNATIONELLA)
+        out[rad["scb_lan"]] = (sorted(egna, key=lambda t: (-t[1], t[0])), svenska)
     return out
 
 

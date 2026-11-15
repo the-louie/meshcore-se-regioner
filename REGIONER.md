@@ -22,15 +22,15 @@ En kantrepeater kan bära ett av dem. Se *Grannlän* i [README.md](README.md#gra
 | Södermanlands län | `se-sor` | förslag | `se04` 8 av 13 | `se04` | `se-sth`, `se-upp`, `se05`, `se08`, `se18`, `se-vml` |
 | Östergötlands län | `se05` | uppmätt | `se05` 147 av 150 | `se05` | `se-sth`, `se-sor`, `se-jkp`, `se08`, `se-vgr`, `se18`, `se-vml` |
 | Jönköpings län | `se-jkp` | lokalt | `se-jkp` 3374 av 3429, `se06` 7 av 3429 | `se06` | `se05`, `se-kro`, `se08`, `se13`, `se-vgr`, `se18` |
-| Kronobergs län | `se-kro` | förslag | `se07` 43 av 96 | `se07` | `se-jkp`, `se08`, `se-blk`, `se-ska`, `se13`, `se-vgr` |
-| Kalmar län | `se08` | uppmätt | `se08` 5274 av 5362 | `se08` | `se-sor`, `se05`, `se-jkp`, `se-kro`, `se-gtl`, `se-blk` |
+| Kronobergs län | `se-kro` | förslag | `se07` 43 av 88 | `se07` | `se-jkp`, `se08`, `se-blk`, `se12`, `se13`, `se-vgr` |
+| Kalmar län | `se08` | uppmätt | `se08` 5274 av 5335 | `se08` | `se-sor`, `se05`, `se-jkp`, `se-kro`, `se-gtl`, `se-blk` |
 | Gotlands län | `se-gtl` | förslag |  | `se09` | `se-sth`, `se08` |
-| Blekinge län | `se-blk` | förslag | `se10` 85 av 711 | `se10` | `se-kro`, `se08`, `se-ska` |
-| Skåne län | `se-ska` | förslag | `se12` 2047 av 4896 | `se12` | `se-kro`, `se-blk`, `se13` |
-| Hallands län | `se13` | uppmätt | `se13` 1418 av 1857 | `se13` | `se-jkp`, `se-kro`, `se-ska`, `se-vgr` |
+| Blekinge län | `se-blk` | förslag | `se10` 85 av 565 | `se10` | `se-kro`, `se08`, `se12` |
+| Skåne län | `se12` | uppmätt | `se12` 2047 av 2645 | `se12` | `se-kro`, `se-blk`, `se13` |
+| Hallands län | `se13` | uppmätt | `se13` 1418 av 1752 | `se13` | `se-jkp`, `se-kro`, `se12`, `se-vgr` |
 | Västra Götalands län | `se-vgr` | förslag |  | `se14` | `se05`, `se-jkp`, `se-kro`, `se13`, `se17`, `se18` |
 | Värmlands län | `se17` | uppmätt | `se17` 531 av 774 | `se17` | `se-vgr`, `se18`, `se20` |
-| Örebro län | `se18` | uppmätt | `se18` 1712 av 2386 | `se18` | `se-sor`, `se05`, `se-jkp`, `se-vgr`, `se17`, `se-vml`, `se20` |
+| Örebro län | `se18` | uppmätt | `se18` 1712 av 2385 | `se18` | `se-sor`, `se05`, `se-jkp`, `se-vgr`, `se17`, `se-vml`, `se20` |
 | Västmanlands län | `se-vml` | förslag |  | `se19` | `se-sth`, `se-upp`, `se-sor`, `se05`, `se18`, `se20`, `se-gav` |
 | Dalarnas län | `se20` | uppmätt | `se20` 735 av 874 | `se20` | `se-upp`, `se17`, `se18`, `se-vml`, `se-gav`, `se23` |
 | Gävleborgs län | `se-gav` | förslag |  | `se21` | `se-sth`, `se-upp`, `se-vml`, `se20`, `se-vnl`, `se23` |

@@ -92,9 +92,10 @@ det, och är därför ett bättre utgångsläge än en gissning. `scripts/seed.p
 - Länens namn med minst 5 meddelanden, och antalet, hamnar i [data/uppmatt.csv](data/uppmatt.csv) och
   syns i kolumnen *Uppmätt* i [REGIONER.md](REGIONER.md). Namn som används färre gånger listas inte.
 - Ett län som ännu inte har bestämt sig får sitt mest använda namn som utgångsläge, om det har
-  **minst 50 kanalmeddelanden** och är **minst hälften av alla meddelanden med scope** som hördes i
-  länet. Raden märks *uppmätt*. Ett län där observers mest hör grannlän eller andra länder lämnas
-  orört.
+  **minst 50 kanalmeddelanden** och är **minst hälften av meddelandena med scope** som hördes i
+  länet, med utlandstrafik borträknad (danska, norska och finska scopes, `eu`, `europe`, `nordic`,
+  `oresund`). Raden märks *uppmätt*. Ett län där observers mest hör svenska grannlän lämnas orört;
+  ett gränslän som också hör mycket dansk eller norsk trafik bedöms på den svenska trafiken.
 
 Mätningen ändrar aldrig ett namn som länet har valt själv (*lokalt*). Ett uppmätt namn är fortfarande
 ett förslag: det visar vad som används, inte vad länet har kommit överens om. Ett meddelande är inte en
